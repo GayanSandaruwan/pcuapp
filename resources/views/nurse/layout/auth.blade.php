@@ -11,7 +11,9 @@
     <title>{{ config('app.name', 'Laravel Multi Auth Guard') }}</title>
 
     <!-- Styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="/css/app.css" rel="stylesheet">
+
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -28,21 +30,18 @@
     </script>
 </head>
 <body>
-    <nav class="navbar navbar-default navbar-static-top">
+    <nav class="navbar navbar navbar-expand-lg navbar-dark bg-primary" >
         <div class="container">
             <div class="navbar-header">
 
                 <!-- Collapsed Hamburger -->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                    <span class="sr-only">Toggle Navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                <button type="button" class="navbar-toggle collapsed" style="background-color: black;font-size: large;" data-toggle="collapse" data-target="#app-navbar-collapse">
+                    <span class="fa fa-align-justify"></span>
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/nurse') }}">
-                    {{ config('app.name', 'Laravel Multi Auth Guard') }}: Nurse
+                <a class="navbar-brand" href="#">
+                    {{ config('app.name', 'Laravel Multi Auth Guard') }} : Nurse
                 </a>
             </div>
 
@@ -61,8 +60,10 @@
                         <li><a href="{{ url('/nurse/patient/add') }}"><button type="button" class="btn" style="border-radius: 50px; border-color: #98cbe8">New Assesment Record</button></a></li>
 
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color: white">
+                                {{ Auth::user()->name }}
+                                <span class="fa fa-address-book "></span>
+
                             </a>
 
                             <ul class="dropdown-menu" role="menu">

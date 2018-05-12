@@ -28,7 +28,7 @@
                                 <label for="name" class="col-md-4 control-label">Name</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="password" class="form-control" name="name">
+                                    <input id="name" type="text" class="form-control" name="name" value="{{old('name')}}">
 
                                     @if ($errors->has('name'))
                                         <span class="help-block">
@@ -61,7 +61,56 @@
                                     });
                                 </script>
                             </div>
+                            <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
+                                <label for="name" class="col-md-4 control-label">Gender</label>
 
+                                <div class="col-md-6">
+                                    <label class="btn btn-info" >
+                                        <input checked="checked" name="gender" id="gender" value="male" type="radio"> Male
+                                    </label>
+                                    <label class="btn btn-info">
+                                        <input name="gender" id="gender" value="female" type="radio"> Female
+                                    </label>
+                                    @if ($errors->has('gender'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('gender') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
+                                <label for="address" class="col-md-4 control-label">Address</label>
+
+                                <div class="col-md-6">
+                                    <input id="address" type="text" class="form-control" name="address" value="{{old('address')}}">
+
+                                    @if ($errors->has('address'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('address') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group{{ $errors->has('area') ? ' has-error' : '' }}">
+                                <label for="name" class="col-md-4 control-label">Area</label>
+
+                                <div class="col-md-6">
+                                    <label class="btn btn-info" >
+                                        <input checked="checked" name="area" id="area" value="male" type="radio"> Colombo
+                                    </label>
+                                    <label class="btn btn-info">
+                                        <input name="area" id="area" value="area" type="radio"> Colombo Muni
+                                    </label>
+                                    <label class="btn btn-info" >
+                                        <input checked="checked" name="area" id="area" value="male" type="radio">Out
+                                    </label>
+                                    @if ($errors->has('area'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('area') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <div class="col-md-8 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
@@ -75,7 +124,6 @@
                                 <div class="progress" >
                                     <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="2"
                                          aria-valuemin="0" aria-valuemax="100" style="width:2%; background-color: #34b5ff; color: black">
-                                        Filling patient details (info)
                                     </div>
                                 </div>
                             </div>
@@ -86,4 +134,5 @@
             </div>
         </div>
     </div>
+
 @endsection
