@@ -15,5 +15,7 @@ Route::group(['middleware' => ['web', 'nurse',]], function () {
         return view('nurse.forms.patient');
     });
     Route::post('/patient/add/',"NurseController@addPatient");
+    Route::get('/password/reset',"NurseAuth\ResetPasswordController@showResetForm");
+    Route::post('/password/reset',"NurseAuth\ResetPasswordController@resetPassword");
 
 });

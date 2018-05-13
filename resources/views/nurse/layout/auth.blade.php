@@ -77,6 +77,11 @@
                                         {{ csrf_field() }}
                                     </form>
                                 </li>
+                                <li>
+                                    <a href="{{ url('/nurse/password/reset') }}">
+                                        Reset Password
+                                    </a>
+                                </li>
                             </ul>
                         </li>
 

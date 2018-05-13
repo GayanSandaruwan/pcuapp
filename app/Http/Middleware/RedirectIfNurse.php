@@ -17,7 +17,11 @@ class RedirectIfNurse
 	 */
 	public function handle($request, Closure $next, $guard = 'nurse')
 	{
-	    if (Auth::guard($guard)->check()) {
+	    if($request->is('nurse/password/reset')){
+            return $next($request);
+
+        }
+	    else if (Auth::guard($guard)->check()) {
 	        return redirect('nurse/home');
 	    }
 

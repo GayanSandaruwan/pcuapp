@@ -19,6 +19,9 @@ class RedirectIfAdmin
 	{
 	    if($request->is('admin/register')){
             return $next($request);
+        }
+        else if($request->is('admin/password/reset')){
+            return $next($request);
 
         }
 	    else if (Auth::guard($guard)->check()) {

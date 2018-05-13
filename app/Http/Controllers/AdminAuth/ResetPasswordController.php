@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminAuth;
 
 use App\Http\Controllers\Controller;
+use Validator;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
@@ -31,6 +32,7 @@ class ResetPasswordController extends Controller
     public $redirectTo = '/admin/home';
 
 
+
     /**
      * Create a new controller instance.
      *
@@ -50,11 +52,9 @@ class ResetPasswordController extends Controller
      * @param  string|null  $token
      * @return \Illuminate\Http\Response
      */
-    public function showResetForm(Request $request, $token = null)
+    public function showResetForm(Request $request)
     {
-        return view('admin.auth.passwords.reset')->with(
-            ['token' => $token, 'email' => $request->email]
-        );
+        return view('admin.auth.passwords.reset');
     }
 
     /**
@@ -75,5 +75,19 @@ class ResetPasswordController extends Controller
     protected function guard()
     {
         return Auth::guard('admin');
+    }
+    protected function resetPassword(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        $user = Auth::guard('admin')->user();
+        $user->password = bcrypt($request->password);
+        $user->save();
+        return view('admin.auth.passwords.success');
+    }
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'password' => 'required|min:6|confirmed',
+        ]);
     }
 }

@@ -20,12 +20,6 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/login', 'AdminAuth\LoginController@login');
     Route::post('/logout', 'AdminAuth\LoginController@logout')->name('logout');
 
-
-//    Route::post('/password/email', 'AdminAuth\ForgotPasswordController@sendResetLinkEmail')->name('password.request');
-    Route::post('/password/reset', 'AdminAuth\ResetPasswordController@reset')->name('password.email');
-    Route::get('/password/reset', 'AdminAuth\ForgotPasswordController@showLinkRequestForm')->name('password.reset');
-    Route::get('/password/reset/{token}', 'AdminAuth\ResetPasswordController@showResetForm');
-
 });
 
 /*
@@ -39,16 +33,13 @@ Route::group(['middleware' => ['web', 'admin',]], function () {
 
     Route::get('nurse/register', 'NurseAuth\RegisterController@showRegistrationForm')->name('register');
     Route::post('nurse/register', 'NurseAuth\RegisterController@register');
+    Route::get('admin/password/reset',"AdminAuth\ResetPasswordController@showResetForm");
+    Route::post('admin/password/reset',"AdminAuth\ResetPasswordController@resetPassword");
+
 });
 
 Route::group(['prefix' => 'nurse'], function () {
     Route::get('/login', 'NurseAuth\LoginController@showLoginForm')->name('login');
     Route::post('/login', 'NurseAuth\LoginController@login');
     Route::post('/logout', 'NurseAuth\LoginController@logout')->name('logout');
-
-
-//  Route::post('/password/email', 'NurseAuth\ForgotPasswordController@sendResetLinkEmail')->name('password.request');
-    Route::post('/password/reset', 'NurseAuth\ResetPasswordController@reset')->name('password.email');
-    Route::get('/password/reset', 'NurseAuth\ForgotPasswordController@showLinkRequestForm')->name('password.reset');
-    Route::get('/password/reset/{token}', 'NurseAuth\ResetPasswordController@showResetForm');
 });

@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Http\Request;
+use Validator;
 
 class ResetPasswordController extends Controller
 {
@@ -50,11 +51,9 @@ class ResetPasswordController extends Controller
      * @param  string|null  $token
      * @return \Illuminate\Http\Response
      */
-    public function showResetForm(Request $request, $token = null)
+    public function showResetForm(Request $request)
     {
-        return view('nurse.auth.passwords.reset')->with(
-            ['token' => $token, 'email' => $request->email]
-        );
+        return view('nurse.auth.passwords.reset');
     }
 
     /**
@@ -75,5 +74,19 @@ class ResetPasswordController extends Controller
     protected function guard()
     {
         return Auth::guard('nurse');
+    }
+    protected function resetPassword(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        $user = Auth::guard('nurse')->user();
+        $user->password = bcrypt($request->password);
+        $user->save();
+        return view('nurse.auth.passwords.success');
+    }
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'password' => 'required|min:6|confirmed',
+        ]);
     }
 }
