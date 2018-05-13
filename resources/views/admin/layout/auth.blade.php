@@ -61,6 +61,7 @@
                     @else
                         <li><a href="{{ url('/nurse/register') }}"><button type="button" class="btn" style="border-radius: 50px; border-color: #98cbe8">Add Nurse</button></a></li>
                         <li><a href="{{ url('/admin/register') }}"><button type="button" class="btn" style="border-radius: 50px; border-color: #98cbe8">Add Admin</button></a></li>
+                        <li><a href="{{ url('admin/update/nurse/accounts') }}"><button type="button" class="btn" style="border-radius: 50px; border-color: #98cbe8">Nurse Accounts</button></a></li>
 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

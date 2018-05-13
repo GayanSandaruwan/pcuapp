@@ -17,7 +17,10 @@ class RedirectIfNurse
 	 */
 	public function handle($request, Closure $next, $guard = 'nurse')
 	{
-	    if($request->is('nurse/password/reset')){
+        if($request->is('nurse/register')){
+            return $next($request);
+        }
+	    else if($request->is('nurse/password/reset')){
             return $next($request);
 
         }

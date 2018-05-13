@@ -10,11 +10,6 @@
                 <div class="panel-body">
                     You are logged in as Admin!
                 </div>
-                @if ($message)
-                    <span class="help-block">
-                        <strong>{{ $message}}</strong>
-                    </span>
-                @endif
             </div>
         </div>
     </div>

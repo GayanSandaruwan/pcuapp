@@ -10,3 +10,10 @@ Route::get('/home', function () {
     return view('admin.home');
 })->name('home');
 
+Route::group(['middleware' => ['web', 'admin',]], function () {
+
+    Route::get('/update/nurse/accounts',"AdminController@showNurseAccounts");
+    Route::post('/update/nurse/accounts',"AdminController@alterNurseAccounts");
+
+
+});
