@@ -43,7 +43,7 @@
                                 </div>
                                     @else
                                     <div class="form-group">
-                                        <div class="col-md-8 col-md-offset-6">
+                                        <div class="col-md-8 col-md-offset-8">
                                             <button type="submit" class="btn btn-default" style="background-color: green; color: white">
                                                 Activate
                                             </button>
