@@ -18,6 +18,7 @@ class CreateNurseAccountStatusesTable extends Migration
             $table->string("old_status");
             $table->string("new_status");
             $table->unsignedInteger("admin_id")->references("id")->on("admins");
+            $table->unsignedInteger("nurse_id")->references("id")->on("nurses");
             $table->timestamps();
         });
     }

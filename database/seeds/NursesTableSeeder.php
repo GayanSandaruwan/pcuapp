@@ -13,7 +13,7 @@ class NursesTableSeeder extends Seeder
     {
         $default_nurse = new \App\Nurse();
         $default_nurse->username = 'nurse';
-        $default_nurse->password = bcrypt('123456');
+        $default_nurse->password = bcrypt('nursepass');
         $default_nurse->name = 'default nurse';
         $default_nurse->save();
     }

@@ -25,17 +25,23 @@ class AdminController extends Controller
 
         $nurse_update_log = new NurseAccountStatus();
         $nurse_update_log->admin_id = Auth::guard('admin')->user()->id;
+        $nurse_update_log->nurse_id = $request->nurse_id;
         $nurse = Nurse::where("id",$request->nurse_id)->first();
         if(strcmp($nurse->status,"active")==0){
             $nurse->status = "inactive";
             $nurse_update_log->old_status = "active";
+            $nurse_update_log->new_status = "inactive";
+
 
         }
         else{
             $nurse->status = "active";
             $nurse_update_log->old_status = "inactive";
+            $nurse_update_log->new_status = "active";
+
 
         }
+        $nurse_update_log->save();
         $nurse->save();
         return redirect("/admin/update/nurse/accounts");
     }

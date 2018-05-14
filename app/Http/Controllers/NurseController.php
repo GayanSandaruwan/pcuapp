@@ -19,7 +19,7 @@ class NurseController extends Controller
             'address' => 'required|min:10',
             'area' =>'required',
             'gender' => 'required',
-            'admission_no' => 'required',
+            'admission_no' => 'required|unique:patients',
         ]);
     }
 
