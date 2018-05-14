@@ -104,6 +104,6 @@ class RegisterController extends Controller
 
 //        $this->guard()->login($user);
         return $this->registered($request, $user)
-            ?: redirect($this->registerRedirect);
+            ?: view("admin.auth.profile")->with(["admin"=>$user]);
     }
 }

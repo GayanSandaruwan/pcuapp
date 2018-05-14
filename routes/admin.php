@@ -16,4 +16,5 @@ Route::group(['middleware' => ['web', 'admin',]], function () {
     Route::post('/update/nurse/accounts',"AdminController@alterNurseAccounts");
 
 
+
 });

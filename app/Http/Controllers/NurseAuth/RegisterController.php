@@ -31,7 +31,7 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = '/nurse/home';
-    protected $registerRedirect = '/';
+    protected $registerRedirect = '/admin/nurse/profile';
 
     /**
      * Create a new controller instance.
@@ -106,6 +106,6 @@ class RegisterController extends Controller
 
 //        $this->guard()->login($user);
         return $this->registered($request, $user)
-            ?: redirect($this->registerRedirect);
+            ?: view('admin.nurseControl.profile')->with(["nurse"=>$user]);
     }
 }
