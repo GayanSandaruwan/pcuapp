@@ -72,6 +72,7 @@ class LoginController extends Controller
     }
 
     public function loginWithFilter(Request $request){
+        $this->validateLogin($request);
         $nurse = Nurse::find(1)->where("username",$request->username)->first();
 //        var_dump($nurse);
         $status = $nurse->status;

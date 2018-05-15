@@ -11,14 +11,24 @@
     <title>{{ config('app.name', 'Laravel Multi Auth Guard') }}</title>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="/css/app.css" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/css/mdb.min.css" rel="stylesheet">
+    {{--<link href="/css/app.css" rel="stylesheet">--}}
 
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/js/mdb.min.js"></script>
     <script type="text/javascript" src="/bootstrap-datepicker-1.6.4-dist/css/bootstrap-datepicker.min.css"></script>
     <script type="text/javascript" src="/bootstrap-datepicker-1.6.4-dist/js/bootstrap-datepicker.min.js"></script>
 
@@ -30,47 +40,30 @@
     </script>
 </head>
 <body>
-    <nav class="navbar navbar navbar-expand-lg navbar-dark bg-primary" >
-        <div class="container">
-            <div class="navbar-header">
-
-                <!-- Collapsed Hamburger -->
-                <button type="button" class="navbar-toggle collapsed" style="background-color: black;font-size: large;" data-toggle="collapse" data-target="#app-navbar-collapse">
-                    <span class="fa fa-align-justify"></span>
-                </button>
-
-                <!-- Branding Image -->
-                <a class="navbar-brand" href="#">
-                    {{ config('app.name', 'Laravel Multi Auth Guard') }} : Nurse
-                </a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    &nbsp;
-                </ul>
-
-                <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
-                    @if (Auth::guest())
-                        <li><a href="{{ url('/nurse/login') }}"><button type="button" class="btn" style="border-radius: 50px; border-color: #98cbe8">Login</button></a></li>
-                    @else
-                        <li><a href="{{ url('/nurse/patient/add') }}"><button type="button" class="btn" style="border-radius: 50px; border-color: #98cbe8">New Assesment Record</button></a></li>
-
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color: white">
-                                {{ Auth::user()->name }}
-                                <span class="fa fa-address-book "></span>
-
-                            </a>
-
-                            <ul class="dropdown-menu" role="menu">
+<header>
+    <nav class="mb-1 navbar navbar-expand-lg navbar-dark cyan">
+        <a class="navbar-brand" href="javascript:;;">PCU App</a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarSupportedContent-4" style="">
+            <ul class="navbar-nav ml-auto">
+                @if (Auth::guest())
+                    <li><a href="{{ url('/nurse/login') }}"><button type="button" class="btn" style="border-radius: 50px; border-color: #98cbe8;">Login</button></a></li>
+                @else
+                    <li class="nav-item active">
+                        <a class="nav-link waves-effect waves-light" href="{{ url('/nurse/patient/add') }}">
+                            <i class="fa fa-wheelchair"></i> Add Patient</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user"></i>  {{ Auth::user()->name }} </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-cyan" aria-labelledby="navbarDropdownMenuLink-4">
+                            <ul>
                                 <li>
                                     <a href="{{ url('/nurse/logout') }}"
-                                        onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
+                                       onclick="event.preventDefault();
+                                                                 document.getElementById('logout-form').submit();">
                                         Logout
                                     </a>
                                     <form id="logout-form" action="{{ url('/nurse/logout') }}" method="POST" style="display: none;">
@@ -82,18 +75,23 @@
                                         Reset Password
                                     </a>
                                 </li>
-                            </ul>
-                        </li>
 
-                    @endif
-                </ul>
-            </div>
+                            </ul>
+                        </div>
+                    </li>
+                @endif
+            </ul>
         </div>
     </nav>
-
+</header>
+<main>
     @yield('content')
 
+</main>
+
     <!-- Scripts -->
-    <script src="/js/app.js"></script>
+    {{--<script src="/js/app.js"></script>--}}
 </body>
 </html>
+
+<body>

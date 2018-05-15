@@ -1,17 +1,17 @@
 @extends('nurse.layout.auth')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid" >
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading" style="background-color: #67b168; text-align:center; font-weight: bold; font-size: 200%">Patient <span class="fa fa-address-card"></span> </div>
-                    <div class="panel-body" style="padding-top: 10%">
+            <div class="col-md-8 float-md-none mx-auto">
+                <div class="card card-default" >
+                    <div class="card-header success-color white-text" style="background-color: #67b168; text-align:center; font-weight: bold; font-size: 200%">Patient <span class="fa fa-address-card"></span> </div>
+                    <div class="card-body" style="padding-top: 10%">
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/nurse/patient/add') }}">
                             {{ csrf_field() }}
 
-                            <div class="form-group{{ $errors->has('admission_no') ? ' has-error' : '' }}">
-                                <label for="admission_no" class="col-md-4 control-label">Admission No</label>
+                            <div class="row justify-content-md-center{{ $errors->has('admission_no') ? ' text-danger' : '' }} mb-3">
+                                <label for="admission_no" class="col-md-3">Admission No</label>
 
                                 <div class="col-md-6">
                                     <input id="admission_no" type="text" class="form-control" name="admission_no" value="{{ old('admission_no') }}" autofocus>
@@ -24,8 +24,8 @@
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label for="name" class="col-md-4 control-label">Name</label>
+                            <div class="row justify-content-md-center{{ $errors->has('name') ? ' text-danger' : '' }} mb-3">
+                                <label for="name" class="col-md-3 ">Name</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text" class="form-control" name="name" value="{{old('name')}}">
@@ -38,8 +38,8 @@
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('birthday') ? ' has-error' : '' }}">
-                                <label for="grade" class="col-md-4 control-label">Birthday</label>
+                            <div class="row justify-content-md-center{{ $errors->has('birthday') ? ' text-danger' : '' }} mb-3">
+                                <label for="grade" class="col-md-3">Birthday</label>
 
                                 <div class="col-md-6">
                                     <div class="input-group date" data-provide="datepicker">
@@ -61,8 +61,8 @@
                                     });
                                 </script>
                             </div>
-                            <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
-                                <label for="name" class="col-md-4 control-label">Gender</label>
+                            <div class="row justify-content-md-center{{ $errors->has('gender') ? ' text-danger' : '' }} mb-3">
+                                <label for="name" class="col-md-3">Gender</label>
 
                                 <div class="col-md-6">
                                     <label class="btn btn-info" >
@@ -78,8 +78,8 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
-                                <label for="address" class="col-md-4 control-label">Address</label>
+                            <div class="row justify-content-md-center{{ $errors->has('address') ? ' text-danger' : '' }} mb-3">
+                                <label for="address" class="col-md-3">Address</label>
 
                                 <div class="col-md-6">
                                     <input id="address" type="text" class="form-control" name="address" value="{{old('address')}}">
@@ -91,8 +91,8 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="form-group{{ $errors->has('area') ? ' has-error' : '' }}">
-                                <label for="name" class="col-md-4 control-label">Area</label>
+                            <div class="row justify-content-md-center{{ $errors->has('area') ? ' text-danger' : '' }} mb-3">
+                                <label for="name" class="col-md-3">Area</label>
 
                                 <div class="col-md-6">
                                     <label class="btn btn-info" >
@@ -111,7 +111,7 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="row justify-content-md-center">
                                 <div class="col-md-8 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
                                         Submit
@@ -120,19 +120,19 @@
                                 </div>
                             </div>
 
-                            <div class="form-group" style="padding:5% ">
-                                <div class="progress" >
-                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="2"
-                                         aria-valuemin="0" aria-valuemax="100" style="width:2%; background-color: #34b5ff; color: black">
-                                    </div>
-                                </div>
-                            </div>
+
 
                         </form>
                     </div>
+                    <div class="card-footer text-muted success-color white-text">
+                            <div class="progress" >
+                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="2"
+                                     aria-valuemin="0" aria-valuemax="100" style="width:2%; background-color: #34b5ff; color: black">
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
     </div>
-
 @endsection

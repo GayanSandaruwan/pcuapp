@@ -1,17 +1,17 @@
 @extends('nurse.layout.auth')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Login</div>
-                    <div class="panel-body">
+            <div class="col-md-6 float-md-none mx-auto">
+                <div class="card card-default">
+                    <div class="card-header success-color white-text">Login : Nurse</div>
+                    <div class="card-body">
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/nurse/login') }}">
                             {{ csrf_field() }}
 
-                            <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-                                <label for="username" class="col-md-4 control-label">User Name</label>
+                            <div class="row justify-content-md-center mb-3{{ $errors->has('username') ? ' text-danger' : '' }}">
+                                <label for="username" class="col-md-3">User Name</label>
 
                                 <div class="col-md-6">
                                     <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" autofocus>
@@ -24,8 +24,8 @@
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="password" class="col-md-4 control-label">Password</label>
+                            <div class="row justify-content-md-center mb-3{{ $errors->has('password') ? ' text-danger' : '' }}">
+                                <label for="password" class="col-md-3">Password</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password" class="form-control" name="password">
@@ -38,7 +38,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div class="row justify-content-md-center mb-3">
                                 <div class="col-md-6 col-md-offset-4">
                                     <div class="checkbox">
                                         <label>
@@ -48,7 +48,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div class="row justify-content-md-center mb-3">
                                 <div class="col-md-8 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
                                         Login
