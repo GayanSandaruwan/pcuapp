@@ -74,7 +74,8 @@
             @auth
                 <a href="{{ url('/home') }}" class="button">Home</a>
             @else
-                <a href="{{ route('login') }}" > <button type="button" class="btn" style="border-radius: 50px; border-color: #98cbe8">Login</button></a>
+                <a href="{{ url('/nurse/login') }}" > <button type="button" class="btn" style="border-radius: 50px; border-color: #98cbe8">Nurse Login</button></a>
+                <a href="{{ url('/admin/login') }}" > <button type="button" class="btn" style="border-radius: 50px; border-color: #98cbe8">Admin Login</button></a>
             @endauth
         </div>
          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">

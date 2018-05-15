@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8 float-md-none mx-auto">
                 <div class="card card-default" >
-                    <div class="card-header success-color white-text" style="background-color: #67b168; text-align:center; font-weight: bold; font-size: 200%">Patient <span class="fa fa-address-card"></span> </div>
+                    <div class="card-header success-color white-text" style="background-color: #67b168; text-align:center; font-weight: bold; font-size: 200%">Patient <span class="fa fa-wheelchair"></span> </div>
                     <div class="card-body" style="padding-top: 10%">
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/nurse/patient/add') }}">
                             {{ csrf_field() }}

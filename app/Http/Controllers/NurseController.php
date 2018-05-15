@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Assessment;
 use App\Patient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Validator;
 
 class NurseController extends Controller
@@ -38,6 +40,48 @@ class NurseController extends Controller
         $patient->area = $request->area;
         $patient->nurse_id = Auth::guard("nurse")->user()->id;
 
-        $sucsee = $patient->save();
+        $success = $patient->save();
+        if($success){
+            return redirect("/nurse/assessment/new/".$patient->id);
+        }
+    }
+
+    public function showNewAssessmentForm(Request $request,$patient_id){
+        $patient = DB::table("patients")->where("id",$patient_id)->first();
+        if($patient==null){
+            return abort(404,"Invalid Patient");
+        }
+        return view('nurse.forms.newAssessment')->with(["patient"=>$patient]);
+    }
+    public function addAssessment(Request $request){
+
+        $this->assessmentValidator($request->all())->validate();
+
+        $assessment = new Assessment();
+        $assessment->complain = $request->complain;
+        $assessment->resp_rate = $request->resp_rate;
+        $assessment->resp_effort = $request->resp_effort;
+        $assessment->spo2 = $request->spo2;
+        $assessment->o2_liters = $request->o2_liters;
+        $assessment->heart_rate = $request->heart_rate;
+        $assessment->systolic_bp = $request->systolic_bp;
+
+        $assessment->nurse_id = Auth::guard('nurse')->user()->id;
+
+        $success = $assessment->save();
+        if($success){
+            echo "Success";
+        }
+    }
+    protected function assessmentValidator(array $data)
+    {
+        return Validator::make($data, [
+            'resp_rate' => 'required|numeric|between:0,300',
+            'resp_effort' => 'required|max:8',
+            'spo2' => 'required|numeric|between:0,300',
+            'o2_liters' =>'required|max:3',
+            'heart_rate' => 'required|numeric|between:0,300',
+            'systolic_bp' => 'required|numeric|between:0,300',
+        ]);
     }
 }
