@@ -40,6 +40,6 @@ Route::group(['middleware' => ['web', 'admin',]], function () {
 
 Route::group(['prefix' => 'nurse'], function () {
     Route::get('/login', 'NurseAuth\LoginController@showLoginForm')->name('login');
-    Route::post('/login', 'NurseAuth\LoginController@login');
+    Route::post('/login', 'NurseAuth\LoginController@loginWithFilter');
     Route::post('/logout', 'NurseAuth\LoginController@logout')->name('logout');
 });

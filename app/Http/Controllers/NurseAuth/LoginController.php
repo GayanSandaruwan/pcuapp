@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\NurseAuth;
 
 use App\Http\Controllers\Controller;
+use App\Nurse;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Hesto\MultiAuth\Traits\LogsoutGuard;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -67,5 +69,18 @@ class LoginController extends Controller
     public function username()
     {
         return 'username';
+    }
+
+    public function loginWithFilter(Request $request){
+        $nurse = Nurse::find(1)->where("username",$request->username)->first();
+//        var_dump($nurse);
+        $status = $nurse->status;
+        if(strcmp($status,"active")!=0){
+            return view('nurse.auth.accountDeactive');
+        }
+        else{
+            return $this->login($request);
+        }
+
     }
 }

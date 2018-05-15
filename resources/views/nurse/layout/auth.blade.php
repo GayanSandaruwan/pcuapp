@@ -55,7 +55,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/nurse/login') }}">Login</a></li>
+                        <li><a href="{{ url('/nurse/login') }}"><button type="button" class="btn" style="border-radius: 50px; border-color: #98cbe8">Login</button></a></li>
                     @else
                         <li><a href="{{ url('/nurse/patient/add') }}"><button type="button" class="btn" style="border-radius: 50px; border-color: #98cbe8">New Assesment Record</button></a></li>
 
