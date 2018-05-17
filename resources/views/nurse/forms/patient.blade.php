@@ -42,12 +42,13 @@
                                 <label for="grade" class="col-md-3">Birthday</label>
 
                                 <div class="col-md-6">
-                                    <div class="input-group date" data-provide="datepicker">
-                                        <input type="text" class="form-control" id='birthday' name='birthday' value="{{old('birthday')}}">
+                                    {{--<div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-start-date="-12y">--}}
+
+                                    <input type="text" class="form-control datepicker" id='birthday' name='birthday' placeholder="dd/mm/yyyy" value="{{old('birthday')}}">
                                         <div class="input-group-addon">
                                             <span class="glyphicon glyphicon-th"></span>
                                         </div>
-                                    </div>
+
                                     @if ($errors->has('birthday'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('birthday') }}</strong>
@@ -55,12 +56,111 @@
                                     @endif
                                 </div>
                                 <script type="text/javascript">
-                                    $('#birthday').datepicker({
-                                        format: 'mm/dd/yyyy',
-                                        startDate: '-12y'
+                                    $('.datepicker').datepicker({
+                                        format: 'dd-mm-yyyy',
+                                        startDate: '-10y',
+                                        autoclose : true
                                     });
                                 </script>
+
                             </div>
+                          <!-- Button trigger modal -->
+                            <div class="row justify-content-md-center{{ $errors->has('birthday') ? ' text-danger' : '' }} mb-3">
+                                <div class="col-md-6 offset-md-3">
+                                <button type="button" class="btn btn-green" data-toggle="modal" data-target="#exampleModal">
+                                    <i class="fa fa-calendar-alt ">Calc Birthday from Age</i>
+                                </button>
+                                </div>
+                            </div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Birthday from age</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row justify-content-md-center mb-3">
+                                                <label for="name" class="col-md-3 ">Years</label>
+
+                                                <div class="col-md-6">
+                                                    <input id="years" type="number" class="form-control" name="years" value="{{old('years')}}">
+
+                                                    @if ($errors->has('years'))
+                                                        <span class="help-block">
+                                                            <strong>{{ $errors->first('years') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="row justify-content-md-center mb-3">
+                                                <label for="name" class="col-md-3 ">Months</label>
+
+                                                <div class="col-md-6">
+                                                    <input id="months" type="number" class="form-control" name="months" value="{{old('months')}}">
+
+                                                    @if ($errors->has('months'))
+                                                        <span class="help-block">
+                                                            <strong>{{ $errors->first('months') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="row justify-content-md-center mb-3">
+                                                <label for="name" class="col-md-3 ">Days</label>
+
+                                                <div class="col-md-6">
+                                                    <input id="days" type="number" class="form-control" name="days" value="{{old('days')}}">
+
+                                                    @if ($errors->has('days'))
+                                                        <span class="help-block">
+                                                            <strong>{{ $errors->first('days') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" id="set_birthday" data-dismiss="modal" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                        <script type="text/javascript">
+                                            $('#set_birthday').click(function(){
+                                                var years = document.getElementById("years").value;
+                                                var months = document.getElementById("months").value;
+                                                var days = document.getElementById("days").value;
+                                                if(years === ''){
+                                                    years = 0;
+                                                }
+                                                if(months === ''){
+                                                    months = 0;
+                                                }
+                                                if(days === ''){
+                                                    days = 0;
+                                                }
+                                                var birthday = new Date();
+                                                var now = new Date();
+                                                birthday.setFullYear(now.getFullYear()-years);
+                                                birthday.setMonth(now.getMonth() - months);
+                                                birthday.setDate(now.getDate() - days);
+
+                                                var month = String(birthday.getMonth() + 1);
+                                                var day = String(birthday.getDate());
+                                                var year = String(birthday.getFullYear());
+
+                                                if (month.length < 2) month = '0' + month;
+                                                if (day.length < 2) day = '0' + day;
+                                                var birthday_str = day+"-"+month+"-"+year;
+                                                $('#birthday').val(birthday_str);
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="row justify-content-md-center{{ $errors->has('gender') ? ' text-danger' : '' }} mb-3">
                                 <label for="name" class="col-md-3">Gender</label>
 
@@ -95,14 +195,14 @@
                                 <label for="name" class="col-md-3">Area</label>
 
                                 <div class="col-md-6">
-                                    <label class="btn btn-info" >
-                                        <input checked="checked" name="area" id="area" value="male" type="radio"> Colombo
+                                    <label class="btn btn-info" style="padding-left: 3%; padding-right: 3%" >
+                                        <input checked="checked" name="area" id="area" value="colombo" type="radio"> Colombo
                                     </label>
-                                    <label class="btn btn-info">
-                                        <input name="area" id="area" value="area" type="radio"> Colombo Muni
+                                    <label class="btn btn-info" style="padding-left: 3%; padding-right: 3%">
+                                        <input name="area" id="area" value="colombo municipal" type="radio"> Col. Muni.
                                     </label>
-                                    <label class="btn btn-info" >
-                                        <input checked="checked" name="area" id="area" value="male" type="radio">Out
+                                    <label class="btn btn-info" style="padding-left: 5%; padding-right: 5%" >
+                                        <input checked="checked" name="area" id="area" value="out" type="radio">Out
                                     </label>
                                     @if ($errors->has('area'))
                                         <span class="help-block">

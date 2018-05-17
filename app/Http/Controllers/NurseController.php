@@ -31,8 +31,7 @@ class NurseController extends Controller
         $patient = new Patient();
         $patient->admission_no = $request->admission_no;
         $patient->name = $request->name;
-
-        $birthday = date('Y-m-d', strtotime($request->birthday));
+        $birthday = date('Y-m-d', strtotime(str_replace('/', '-', $request->birthday)));
 
         $patient->birthday = $birthday;
         $patient->gender = $request->gender;
@@ -67,6 +66,7 @@ class NurseController extends Controller
         $assessment->systolic_bp = $request->systolic_bp;
 
         $assessment->nurse_id = Auth::guard('nurse')->user()->id;
+        $assessment->patient_id = $request->patient_id;
 
         $success = $assessment->save();
         if($success){
@@ -82,6 +82,7 @@ class NurseController extends Controller
             'o2_liters' =>'required|max:3',
             'heart_rate' => 'required|numeric|between:0,300',
             'systolic_bp' => 'required|numeric|between:0,300',
+            'patient_id' => 'required|exists:patients,id'
         ]);
     }
 }
