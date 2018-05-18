@@ -21,6 +21,7 @@ Route::group(['middleware' => ['web', 'nurse',]], function () {
     Route::get('/assessment/new/{patient_id}',"NurseController@showNewAssessmentForm");
     Route::post('/assessment/new',"NurseController@addAssessment");
 
+    Route::get('/assessment/print/{assessment_id}',"AssessmentController@getAssessmentPrint");
 
 
 });

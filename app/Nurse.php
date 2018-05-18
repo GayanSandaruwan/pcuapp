@@ -38,4 +38,11 @@ class Nurse extends Authenticatable
     {
         $this->notify(new NurseResetPassword($token));
     }
+
+    public function assessments(){
+        return $this->hasMany('App\Assessment');
+    }
+    public function patients(){
+        return $this->hasMany('App\Patients');
+    }
 }

@@ -70,7 +70,7 @@ class NurseController extends Controller
 
         $success = $assessment->save();
         if($success){
-            echo "Success";
+            return redirect("/nurse/assessment/print/".$assessment->id);
         }
     }
     protected function assessmentValidator(array $data)
@@ -78,7 +78,7 @@ class NurseController extends Controller
         return Validator::make($data, [
             'resp_rate' => 'required|numeric|between:0,300',
             'resp_effort' => 'required|max:8',
-            'spo2' => 'required|numeric|between:0,300',
+            'spo2' => 'required|numeric|between:0,100',
             'o2_liters' =>'required|max:3',
             'heart_rate' => 'required|numeric|between:0,300',
             'systolic_bp' => 'required|numeric|between:0,300',

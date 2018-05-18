@@ -50,9 +50,9 @@
                                 <label for="name" class="col-md-3 ">SPO2</label>
 
                                 <div class="col-md-6">
-                                    <input id="spo2" type="number" class="form-control" name="spo2" value="{{old('spo2')}}" min="0" max="300" required>
+                                    <input id="spo2" type="number" class="form-control" name="spo2" value="{{old('spo2')}}" min="0" max="100" required>
 
-                                    @if ($errors->has('spo2'))
+                                    @if($errors->has('spo2'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('spo2') }}</strong>
                                     </span>
@@ -114,7 +114,7 @@
                                         <input checked="checked" name="o2_liters" id="o2_liters" value="<2L" type="radio"> < 2L
                                     </label>
                                     <label class="btn btn-default">
-                                        <input name="o2_liters" id="o2_liters" value="<2L" type="radio"> >2L
+                                        <input name="o2_liters" id="o2_liters" value=">2L" type="radio"> >2L
                                     </label>
                                     @if ($errors->has('o2_liters'))
                                         <span class="help-block">
