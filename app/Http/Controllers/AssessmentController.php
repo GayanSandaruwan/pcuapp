@@ -19,13 +19,14 @@ class AssessmentController extends Controller
                 $age = $patient->age();
                 $heart_rate_score = $this->heartRateScore($assessment,$age);
                 $systolic_bp_score = $this->systolicBPScore($assessment,$age);
-                $resp_effort_score = $this->respEffortScore($assessment,$age);
+                $resp_rate_score = $this->respRateScore($assessment,$age);
                 $o2_sat_score = $this->o2SatScore($assessment);
                 $o2_flow_rate_score =$this->o2FlowRateScore($assessment);
+                $resp_effort_score = $this->respEffort($assessment);
 
-                $total_score = $heart_rate_score+$systolic_bp_score+$resp_effort_score+$o2_sat_score+$o2_flow_rate_score;
+                $total_score = $heart_rate_score+$systolic_bp_score+$resp_rate_score+$o2_sat_score+$o2_flow_rate_score+$resp_effort_score;
 
-                echo "O2 Flow rate  : ".$o2_flow_rate_score." Heart Rate Score : ".$heart_rate_score." Systolic Bp : ".$systolic_bp_score." Resp Effort : ".$resp_effort_score." O2 Sat Score : ".$o2_sat_score." Total Score : ".$total_score;
+                echo "O2 Flow rate  : ".$o2_flow_rate_score." Heart Rate Score : ".$heart_rate_score." Systolic Bp : ".$systolic_bp_score." Resp Rate  : ".$resp_rate_score." O2 Sat Score : ".$o2_sat_score. " Resp Effort : ".$resp_effort_score." Total Score : ".$total_score;
             }
             else{
                 return abort(404,"Invalid Patient");
@@ -330,7 +331,7 @@ class AssessmentController extends Controller
         }
         return $score;
     }
-    private function respEffortScore(Assessment $assessment,$age){
+    private function respRateScore(Assessment $assessment,$age){
         $resp_rate = $assessment->resp_rate;
         $score = 0;
         if($age->y >= 12){
@@ -499,6 +500,23 @@ class AssessmentController extends Controller
             $score = 2;
         }
     return $score;
+    }
+    private function respEffort(Assessment $assessment){
+        /*
+         * Mild , Moderate falls under same category
+         */
+        $resp_effort = $assessment->resp_effort;
+        $score = 0;
+        if(strcmp($resp_effort,"mild")==0){
+            $score = 1;
+        }
+        elseif (strcmp($resp_effort,"moderate")==0){
+            $score = 1;
+        }
+        elseif (strcmp($resp_effort,"severe")==0){
+            $score = 2;
+        }
+        return $score;
     }
 
     public function getAssessmentPrint(Request $request,$assessment_id){

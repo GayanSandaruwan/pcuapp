@@ -97,7 +97,7 @@
                                         <input name="resp_effort" id="resp_effort" value="moderate" type="radio"> Moderate
                                     </label>
                                     <label class="btn btn-danger" style="padding-left: 4%; padding-right: 4%">
-                                        <input name="resp_effort" id="resp_effort" value="moderate" type="radio"> Severe
+                                        <input name="resp_effort" id="resp_effort" value="severe" type="radio"> Severe
                                     </label>
                                     @if ($errors->has('resp_effort'))
                                         <span class="help-block">
