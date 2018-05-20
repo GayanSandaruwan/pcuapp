@@ -106,19 +106,56 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="row justify-content-md-center{{ $errors->has('o2_liters') ? ' text-danger' : '' }} mb-3">
-                                <label for="name" class="col-md-3">O2 liters</label>
+                            <div class="row justify-content-md-center{{ $errors->has('resp_effort') ? ' text-danger' : '' }} mb-3">
+                                <label for="name" class="col-md-3">Resp. Effort</label>
 
                                 <div class="col-md-6">
-                                    <label class="btn btn-danger" >
+                                    <label class="btn btn-default" style="padding-left: 5%; padding-right: 5%" >
+                                        <input checked="checked" name="avpu" id="avpu" value="alert" type="radio"> Alert
+                                    </label>
+                                    <label class="btn btn-info" style="padding-left: 3%; padding-right: 3%">
+                                        <input name="avpu" id="avpu" value="voice" type="radio"> Voice
+                                    </label>
+                                    <label class="btn btn-danger" style="padding-left: 4%; padding-right: 4%">
+                                        <input name="avpu" id="avpu" value="pain/non" type="radio"> Pain/Non
+                                    </label>
+                                    @if ($errors->has('avpu'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('avpu') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="row justify-content-md-center{{ $errors->has('o2_liters') ? ' text-danger' : '' }} mb-3">
+                                <label for="name" class="col-md-3">O2 flow rate</label>
+
+                                <div class="col-md-6">
+                                    <label class="btn btn-default" >
                                         <input checked="checked" name="o2_liters" id="o2_liters" value="<2L" type="radio"> < 2L
                                     </label>
-                                    <label class="btn btn-default">
-                                        <input name="o2_liters" id="o2_liters" value=">2L" type="radio"> >2L
+                                    <label class="btn btn-danger">
+                                        <input  name="o2_liters" id="o2_liters" value=">2L" type="radio"> >2L
                                     </label>
                                     @if ($errors->has('o2_liters'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('o2_liters') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="row justify-content-md-center{{ $errors->has('crft') ? ' text-danger' : '' }} mb-3">
+                                <label for="name" class="col-md-3">Capillary Re-fill time</label>
+
+                                <div class="col-md-6">
+                                    <label class="btn btn-default" >
+                                        <input checked="checked" name="crft" id="crft" value="<2sec" type="radio"> <2Sec
+                                    </label>
+                                    <label class="btn btn-danger">
+                                        <input name="crft" id="crft" value=">2sec" type="radio"> >2 Sec
+                                    </label>
+                                    @if ($errors->has('crft'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('crft') }}</strong>
                                     </span>
                                     @endif
                                 </div>

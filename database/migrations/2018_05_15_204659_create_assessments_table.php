@@ -22,6 +22,8 @@ class CreateAssessmentsTable extends Migration
             $table->decimal("spo2");
             $table->decimal("heart_rate");
             $table->decimal("systolic_bp");
+            $table->string("avpu");
+            $table->string('crft');
             $table->unsignedInteger("nurse_id")->references("id")->on("nurses");
             $table->unsignedInteger("patient_id")->references("id")->on("patients");
             $table->string("complain");

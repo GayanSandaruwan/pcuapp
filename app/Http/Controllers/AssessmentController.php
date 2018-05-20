@@ -23,10 +23,15 @@ class AssessmentController extends Controller
                 $o2_sat_score = $this->o2SatScore($assessment);
                 $o2_flow_rate_score =$this->o2FlowRateScore($assessment);
                 $resp_effort_score = $this->respEffort($assessment);
+                $avpu_score = $this->avpuScore($assessment);
+                $crft_score = $this->crftScore($assessment);
 
-                $total_score = $heart_rate_score+$systolic_bp_score+$resp_rate_score+$o2_sat_score+$o2_flow_rate_score+$resp_effort_score;
+                $total_score = $heart_rate_score+$systolic_bp_score+$resp_rate_score+$o2_sat_score+$o2_flow_rate_score+$resp_effort_score+$avpu_score+$crft_score;
 
-                echo "O2 Flow rate  : ".$o2_flow_rate_score." Heart Rate Score : ".$heart_rate_score." Systolic Bp : ".$systolic_bp_score." Resp Rate  : ".$resp_rate_score." O2 Sat Score : ".$o2_sat_score. " Resp Effort : ".$resp_effort_score." Total Score : ".$total_score;
+                echo "O2 Flow rate  : ".$o2_flow_rate_score." Heart Rate Score : ".$heart_rate_score.
+                    " Systolic Bp : ".$systolic_bp_score." Resp Rate  : ".$resp_rate_score." O2 Sat Score : "
+                    .$o2_sat_score. " Resp Effort : ".$resp_effort_score.
+                    " AVPU Score : ".$avpu_score." CRFT Score : ".$crft_score." Total Score : ".$total_score;
             }
             else{
                 return abort(404,"Invalid Patient");
@@ -518,6 +523,41 @@ class AssessmentController extends Controller
         }
         return $score;
     }
+    private function avpuScore(Assessment $assessment){
+        /*
+         * Mild , Moderate falls under same category
+         */
+        $avpu = $assessment->avpu;
+        $score = 0;
+        if(strcmp($avpu,"alert")==0){
+            $score = 1;
+        }
+        elseif (strcmp($avpu,"voice")==0){
+            $score = 1;
+        }
+        elseif (strcmp($avpu,"pain/non")==0){
+            $score = 3;
+        }
+        return $score;
+    }
+    private function crftScore(Assessment $assessment){
+        /*
+         * Mild , Moderate falls under same category
+         */
+        $crft = $assessment->crft;
+        $score = 0;
+        if(strcmp($crft,"<2sec")==0){
+            $score = 0;
+        }
+        elseif (strcmp($crft,">2sec")==0){
+            $score = 1;
+        }
+        else{
+            return abort(403, "Invalid parameters been set");
+        }
+        return $score;
+    }
+
 
     public function getAssessmentPrint(Request $request,$assessment_id){
         return $this->calculateScore($assessment_id);

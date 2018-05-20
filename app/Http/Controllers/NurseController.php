@@ -64,9 +64,12 @@ class NurseController extends Controller
         $assessment->o2_liters = $request->o2_liters;
         $assessment->heart_rate = $request->heart_rate;
         $assessment->systolic_bp = $request->systolic_bp;
+        $assessment->avpu = $request->avpu;
+        $assessment->crft = $request->crft;
 
         $assessment->nurse_id = Auth::guard('nurse')->user()->id;
         $assessment->patient_id = $request->patient_id;
+
 
         $success = $assessment->save();
         if($success){
@@ -82,7 +85,9 @@ class NurseController extends Controller
             'o2_liters' =>'required|max:3',
             'heart_rate' => 'required|numeric|between:0,300',
             'systolic_bp' => 'required|numeric|between:0,300',
-            'patient_id' => 'required|exists:patients,id'
+            'patient_id' => 'required|exists:patients,id',
+            'avpu' => 'required',
+            'crft'=>'required',
         ]);
     }
 }
