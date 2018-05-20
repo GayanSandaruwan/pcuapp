@@ -12,11 +12,13 @@ class AssessmentController extends Controller
     public function calculateScore($assessment_id){
 
         $assessment = Assessment::where("id",$assessment_id)->first();
-        if($assessment->count()){
+        if($assessment != null){
             $patient = $assessment->patient()->first();
 //            var_dump($patient);
-            if($patient->count()){
+            if($patient!= null){
                 $age = $patient->age();
+                $patient['age'] = $age;
+
                 $heart_rate_score = $this->heartRateScore($assessment,$age);
                 $systolic_bp_score = $this->systolicBPScore($assessment,$age);
                 $resp_rate_score = $this->respRateScore($assessment,$age);
@@ -28,19 +30,35 @@ class AssessmentController extends Controller
 
                 $total_score = $heart_rate_score+$systolic_bp_score+$resp_rate_score+$o2_sat_score+$o2_flow_rate_score+$resp_effort_score+$avpu_score+$crft_score;
 
-                echo "O2 Flow rate  : ".$o2_flow_rate_score." Heart Rate Score : ".$heart_rate_score.
-                    " Systolic Bp : ".$systolic_bp_score." Resp Rate  : ".$resp_rate_score." O2 Sat Score : "
-                    .$o2_sat_score. " Resp Effort : ".$resp_effort_score.
-                    " AVPU Score : ".$avpu_score." CRFT Score : ".$crft_score." Total Score : ".$total_score;
+                $score = array(
+                    'heart_rate'=>$heart_rate_score,
+                    'systolic_bp' => $systolic_bp_score,
+                    'resp_rate' =>$resp_rate_score,
+                    'resp_effort'=>$resp_effort_score,
+                    'spo2'=> $o2_sat_score,
+                    'o2_liters' => $o2_flow_rate_score,
+                    'avpu'=>$avpu_score,
+                    'crft'=>$crft_score,
+                    'total' => $total_score,
+                );
+                $recomendation = $this->getRecommendation($total_score);
+//                echo "O2 Flow rate  : ".$o2_flow_rate_score." Heart Rate Score : ".$heart_rate_score.
+//                    " Systolic Bp : ".$systolic_bp_score." Resp Rate  : ".$resp_rate_score." O2 Sat Score : "
+//                    .$o2_sat_score. " Resp Effort : ".$resp_effort_score.
+//                    " AVPU Score : ".$avpu_score." CRFT Score : ".$crft_score." Total Score : ".$total_score;
+                $nurse = $assessment->nurse()->first()->name;
+
+                return view('nurse.forms.printAssessment')
+                    ->with(['patient'=>$patient,'assessment'=>$assessment,'score'=>$score,'recomendation'=>$recomendation,'nurse'=>$nurse]);
             }
             else{
-                return abort(404,"Invalid Patient");
+                return abort(404);
 
             }
 
         }
         else{
-            return abort(404,"Invalid Patient");
+            return abort(404);
         }
 
     }
@@ -553,11 +571,58 @@ class AssessmentController extends Controller
             $score = 1;
         }
         else{
-            return abort(403, "Invalid parameters been set");
+            return abort(404);
         }
         return $score;
     }
 
+    private function getRecommendation($total_score){
+        $recommendation = array();
+        switch ($total_score){
+            case 1 :
+                $recommendation['observe_frequency'] = '4 Hourly';
+                $recommendation['whom_to_alert'] = ' ';
+                $recommendation['response'] = 'to review room';
+                $recommendation['color_code'] = 'green';
+                break;
+            case 2 :
+                $recommendation['observe_frequency'] = '2 to 4 Hourly';
+                $recommendation['whom_to_alert'] = ' ';
+                $recommendation['response'] = 'To review room';
+                $recommendation['color_code'] = 'green';
+
+                break;
+            case 3 :
+                $recommendation['observe_frequency'] = '1 Hourly';
+                $recommendation['whom_to_alert'] = ' Alert Medical Officer';
+                $recommendation['response'] = 'To observation bed';
+                $recommendation['color_code'] = 'blue';
+
+                break;
+            case 4 or 5 :
+                $recommendation['observe_frequency'] = '30 Minutes';
+                $recommendation['whom_to_alert'] = ' Alert Medical Officer';
+                $recommendation['response'] = 'To observation bed';
+                $recommendation['color_code'] = 'blue';
+
+                break;
+            case 6 :
+                $recommendation['observe_frequency'] = 'continuous';
+                $recommendation['whom_to_alert'] = ' Alert MO + consultant';
+                $recommendation['response'] = 'Argent senior medical review';
+                $recommendation['color_code'] = 'red';
+
+                break;
+            case $total_score >= 7 :
+                $recommendation['observe_frequency'] = 'continuous';
+                $recommendation['whom_to_alert'] = 'Urgent PEWS call*';
+                $recommendation['response'] = 'Immediate local response team';
+                $recommendation['color_code'] = 'red';
+
+                break;
+        }
+        return $recommendation;
+    }
 
     public function getAssessmentPrint(Request $request,$assessment_id){
         return $this->calculateScore($assessment_id);
