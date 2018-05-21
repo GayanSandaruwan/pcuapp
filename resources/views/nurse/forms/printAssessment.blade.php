@@ -9,7 +9,7 @@
                     <div class="card-body" style="padding-bottom: 0%; font-size: 12pt;" >
                         <div class="container" id="assessment-print">
                             <div class="row"><p>Date : Time : &nbsp; {{$patient->created_at}}</p></div>
-                            <div class="row"><p>Admission No : </p></div>
+                            <div class="row"><p>Admission No : {{$patient->admission_no}}</p></div>
                             <div class="row justify-content-md-center">
                                 <div class="col col-md-12">
                                     <h4 style="font-weight: bold;font-size: 16pt">Priliminary care unit- Patient Assessment Record</h4>
