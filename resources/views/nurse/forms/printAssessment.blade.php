@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid" >
         <div class="row">
-            <div class="col-md-10 float-md-none mx-auto">
+            <div class="col-md-9 float-md-none mx-auto">
                 <div class="card card-default" >
                     <div class="card-header success-color white-text" style="background-color: #67b168; text-align:center; font-weight: bold; font-size: 200%">Priliminary care unit- Patient Assessment Record<span class="fa fa-wheelchair"></span> </div>
                     <div class="card-body" id="assessment-print" style="padding-bottom: 0%; font-size: 12pt;line-height:.0.5rem" >
@@ -23,7 +23,7 @@
                         <div class="row"><p>Presenting complain : &nbsp; {{$assessment->complain}}</p></div>
                         <div class="row"><p>Clinical Parameters :</p></div>
                         <div class="row">
-                            <div class="col-md-6" id="table" style=" font-size: 12pt;">
+                            <div class="col-md-7" id="table" style=" font-size: 12pt;">
                                 <table class="table table-striped" >
                                     <thead>
                                     <tr>
@@ -82,10 +82,10 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <div class="container-fluid h-100" >
                                     <div class="row row h-100 justify-content-center align-items-center">
-                                        <div class="col-md-8 float-md-none mx-auto " style="border-color: black; border-style: dashed">
+                                        <div class="col-md-12 float-md-none mx-auto " style="border-color: black; border-style: dashed">
                                             <div class="card card-default" >
                                                 <div class="card-header {{$recomendation['color_code']}} white-text" style="background-color: #67b168; text-align:center; font-weight: bold; font-size: 200%">{{$recomendation['response']}}</div>
                                                 <div class="card-body" style="padding-top: 10%">
@@ -106,9 +106,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col col-md-offset-8" >
-                <div class="btn btn-default" onclick="PrintElem()"><span class="fa fa-print"> Print </span></div> </div>
-            </div>
+            {{--<div class="" >--}}
+                <div class="btn btn-default" style="position: fixed;right:22%; top: 24% " onclick="PrintElem()"><span class="fa fa-print"> Print </span></div> </div>
+            {{--</div>--}}
         </div>
     </div>
     <script type="text/javascript">
