@@ -211,6 +211,19 @@
                                     @endif
                                 </div>
                             </div>
+                            <div class="row justify-content-md-center{{ $errors->has('contact_no') ? ' text-danger' : '' }} mb-3">
+                                <label for="contact_no" class="col-md-3">Contact No </label>
+
+                                <div class="col-md-6">
+                                    <input id="contact_no" type="number" class="form-control" name="contact_no" value="{{old('contact_no')}}">
+
+                                    @if ($errors->has('contact_no'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('contact_no') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
                             <div class="row justify-content-md-center">
                                 <div class="col-md-8 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">

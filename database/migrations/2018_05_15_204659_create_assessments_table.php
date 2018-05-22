@@ -16,16 +16,17 @@ class CreateAssessmentsTable extends Migration
         Schema::create('assessments', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->decimal("resp_rate");
+            $table->integer("resp_rate");
             $table->string("resp_effort");
             $table->string("o2_liters");
-            $table->decimal("spo2");
-            $table->decimal("heart_rate");
-            $table->decimal("systolic_bp");
+            $table->integer("spo2");
+            $table->integer("heart_rate");
+            $table->integer("systolic_bp");
             $table->string("avpu");
             $table->string('crft');
             $table->unsignedInteger("nurse_id")->references("id")->on("nurses");
             $table->unsignedInteger("patient_id")->references("id")->on("patients");
+            $table->unsignedInteger("admission_id")->references("id")->on("admissions.");
             $table->string("complain");
         });
     }

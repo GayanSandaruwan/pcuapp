@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Admission;
 use App\Assessment;
 use App\Patient;
 use Illuminate\Http\Request;
@@ -21,7 +22,8 @@ class NurseController extends Controller
             'address' => 'required|min:10',
             'area' =>'required',
             'gender' => 'required',
-            'admission_no' => 'required|unique:patients',
+            'admission_no' => 'required|unique:admissions',
+            'contact_no' =>'required|min:9|max:10'
         ]);
     }
 
@@ -29,7 +31,7 @@ class NurseController extends Controller
         $this->validator($request->all())->validate();
 
         $patient = new Patient();
-        $patient->admission_no = $request->admission_no;
+//        $patient->admission_no = $request->admission_no;
         $patient->name = $request->name;
         $birthday = date('Y-m-d', strtotime(str_replace('/', '-', $request->birthday)));
 
@@ -37,20 +39,28 @@ class NurseController extends Controller
         $patient->gender = $request->gender;
         $patient->address = $request->address;
         $patient->area = $request->area;
-        $patient->nurse_id = Auth::guard("nurse")->user()->id;
+        $patient->contact_no = $request->contact_no;
 
+        $patient->nurse_id = Auth::guard("nurse")->user()->id;
         $success = $patient->save();
+
+        // Saving admission for the patient;
+        $admission = new Admission();
+        $admission->admission_no = $request->admission_no;
+        $admission->patient_id = $patient->id;
+        $admission->save();
         if($success){
-            return redirect("/nurse/assessment/new/".$patient->id);
+            return redirect("/nurse/assessment/new/".$admission->id);
         }
     }
 
-    public function showNewAssessmentForm(Request $request,$patient_id){
-        $patient = DB::table("patients")->where("id",$patient_id)->first();
-        if($patient==null){
+    public function showNewAssessmentForm(Request $request,$admission_id){
+        $admission = Admission::where("id",$admission_id)->first();
+        if($admission==null){
             return abort(404,"Invalid Patient");
         }
-        return view('nurse.forms.newAssessment')->with(["patient"=>$patient]);
+        $patient = $admission->patient()->first();
+        return view('nurse.forms.newAssessment')->with(["patient"=>$patient,"admission"=>$admission]);
     }
     public function addAssessment(Request $request){
 
@@ -69,6 +79,7 @@ class NurseController extends Controller
 
         $assessment->nurse_id = Auth::guard('nurse')->user()->id;
         $assessment->patient_id = $request->patient_id;
+        $assessment->admission_id = $request->admission_id;
 
 
         $success = $assessment->save();

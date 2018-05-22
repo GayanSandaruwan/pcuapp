@@ -14,8 +14,9 @@ class AssessmentController extends Controller
         $assessment = Assessment::where("id",$assessment_id)->first();
         if($assessment != null){
             $patient = $assessment->patient()->first();
+            $admission = $assessment->admission()->first();
 //            var_dump($patient);
-            if($patient!= null){
+            if($patient!= null and $admission != null){
                 $age = $patient->age();
                 $patient['age'] = $age;
 
@@ -49,7 +50,7 @@ class AssessmentController extends Controller
                 $nurse = $assessment->nurse()->first()->name;
 
                 return view('nurse.forms.printAssessment')
-                    ->with(['patient'=>$patient,'assessment'=>$assessment,'score'=>$score,'recomendation'=>$recomendation,'nurse'=>$nurse]);
+                    ->with(['patient'=>$patient,'assessment'=>$assessment,'score'=>$score,'recomendation'=>$recomendation,'nurse'=>$nurse,'admission'=>$admission]);
             }
             else{
                 return abort(404);

@@ -21,7 +21,8 @@ class CreatePatientsTable extends Migration
             $table->date("birthday");
             $table->string('gender');
             $table->string("area");
-            $table->string("admission_no");
+//            $table->string("admission_no");
+            $table->string("contact_no");
             $table->unsignedInteger("nurse_id")->references("id")->on("nurses");
         });
     }

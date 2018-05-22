@@ -28,4 +28,7 @@ class Patient extends Model
     public function nurse(){
         return $this->belongsTo('App\Nurse');
     }
+    public function admissions(){
+        return $this->hasMany('App\Admissions');
+    }
 }

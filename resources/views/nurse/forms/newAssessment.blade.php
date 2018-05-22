@@ -14,8 +14,10 @@
                                 <label for="admission_no" class="col-md-3">Addmission No</label>
 
                                 <div class="col-md-6">
-                                    <input id="admission_no" type="text" disabled class="form-control" name="admission_no" value="{{ $patient->admission_no}}" autofocus>
+                                    <input id="admission_no" type="text" disabled class="form-control" name="admission_no" value="{{ $admission->admission_no}}" autofocus>
                                     <input id="patient_id" type="text" hidden class="form-control" name="patient_id" value="{{ $patient->id}}" autofocus>
+                                    <input id="patient_id" type="text" hidden class="form-control" name="admission_id" value="{{ $admission->id}}" autofocus>
+
                                 </div>
                             </div>
                             <div class="row justify-content-md-center{{ $errors->has('complain') ? ' text-danger' : '' }} mb-3">

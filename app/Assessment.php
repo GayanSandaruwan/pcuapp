@@ -13,4 +13,7 @@ class Assessment extends Model
     public function nurse(){
         return $this->belongsTo('App\Nurse');
     }
+    public function admission(){
+        return $this->belongsTo('App\Admission');
+    }
 }

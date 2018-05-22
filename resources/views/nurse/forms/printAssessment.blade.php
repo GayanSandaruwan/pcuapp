@@ -9,7 +9,7 @@
                     <div class="card-body" style="padding-bottom: 0%; font-size: 12pt;" >
                         <div class="container" id="assessment-print">
                             <div class="row"><p>Date : Time : &nbsp; {{$patient->created_at}}</p></div>
-                            <div class="row"><p>Admission No : {{$patient->admission_no}}</p></div>
+                            <div class="row"><p>Admission No : {{$admission->admission_no}}</p></div>
                             <div class="row justify-content-md-center">
                                 <div class="col col-md-12">
                                     <h4 style="font-weight: bold;font-size: 16pt">Priliminary care unit- Patient Assessment Record</h4>
@@ -19,7 +19,7 @@
                             <div class="row"><p>Age (on the date patient registered) : &nbsp; {{$patient->age->y}} Years {{$patient->age->m}} Months {{$patient->age->d}} Days</p></div>
                             <div class="row"><p>Gender : &nbsp; {{$patient->gender}}</p></div>
                             <div class="row"><p>Address : &nbsp; {{$patient->address}}</p></div>
-                            <div class="row"><p>Contact No :</p></div>
+                            <div class="row"><p>Contact No : {{$patient->contact_no}}</p></div>
                             <div class="row"><p>Source Of patient to PCU : &nbsp; {{$patient->area}}</p></div>
                             <div class="row"><p>Presenting complain : &nbsp; {{$assessment->complain}}</p></div>
                             <div class="row"><p>Clinical Parameters :</p></div>
