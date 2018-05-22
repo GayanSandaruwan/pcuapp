@@ -93,7 +93,7 @@
 
                                 <div class="col-md-6">
                                     <label class="btn btn-default" style="padding-left: 5%; padding-right: 5%" >
-                                        <input checked="checked" name="resp_effort" id="resp_effort" value="mild" type="radio"> Mild
+                                        <input  name="resp_effort" id="resp_effort" value="mild" type="radio"> Mild
                                     </label>
                                     <label class="btn btn-info" style="padding-left: 3%; padding-right: 3%">
                                         <input name="resp_effort" id="resp_effort" value="moderate" type="radio"> Moderate
@@ -113,7 +113,7 @@
 
                                 <div class="col-md-6">
                                     <label class="btn btn-default" style="padding-left: 5%; padding-right: 5%" >
-                                        <input checked="checked" name="avpu" id="avpu" value="alert" type="radio"> Alert
+                                        <input  name="avpu" id="avpu" value="alert" type="radio"> Alert
                                     </label>
                                     <label class="btn btn-info" style="padding-left: 3%; padding-right: 3%">
                                         <input name="avpu" id="avpu" value="voice" type="radio"> Voice
@@ -133,7 +133,7 @@
 
                                 <div class="col-md-6">
                                     <label class="btn btn-default" >
-                                        <input checked="checked" name="o2_liters" id="o2_liters" value="<2L" type="radio"> < 2L
+                                        <input  name="o2_liters" id="o2_liters" value="<2L" type="radio"> < 2L
                                     </label>
                                     <label class="btn btn-danger">
                                         <input  name="o2_liters" id="o2_liters" value=">2L" type="radio"> >2L
@@ -150,7 +150,7 @@
 
                                 <div class="col-md-6">
                                     <label class="btn btn-default" >
-                                        <input checked="checked" name="crft" id="crft" value="<2sec" type="radio"> <2Sec
+                                        <input  name="crft" id="crft" value="<2sec" type="radio"> <2Sec
                                     </label>
                                     <label class="btn btn-danger">
                                         <input name="crft" id="crft" value=">2sec" type="radio"> >2 Sec

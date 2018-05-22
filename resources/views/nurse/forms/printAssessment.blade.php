@@ -37,43 +37,43 @@
                                         <tbody>
                                         <tr>
                                             <td>Respiratory Rate</td>
+                                            <td>{{$assessment->resp_rate or "-"}}</td>
                                             <td>{{$score['resp_rate']}}</td>
-                                            <td>{{$assessment->resp_rate}}</td>
                                         </tr>
                                         <tr>
                                             <td>Respiratory Effort</td>
+                                            <td>{{$assessment->resp_effort or "-"}}</td>
                                             <td>{{$score['resp_effort']}}</td>
-                                            <td>{{$assessment->resp_effort}}</td>
                                         </tr>
                                         <tr>
                                             <td>Oxygon Saturation</td>
+                                            <td>{{$assessment->spo2 or "-"}}</td>
                                             <td>{{$score['spo2']}}</td>
-                                            <td>{{$assessment->spo2}}</td>
                                         </tr>
                                         <tr>
                                             <td>Oxygon flow rate per minute</td>
+                                            <td>{{$assessment->o2_liters or "-"}}</td>
                                             <td>{{$score['o2_liters']}}</td>
-                                            <td>{{$assessment->o2_liters}}</td>
                                         </tr>
                                         <tr>
                                             <td>Heart Rate</td>
+                                            <td>{{$assessment->heart_rate or "-"}}</td>
                                             <td>{{$score['heart_rate']}}</td>
-                                            <td>{{$assessment->heart_rate}}</td>
                                         </tr>
                                         <tr>
                                             <td>Systolic blood pressure</td>
+                                            <td>{{$assessment->systolic_bp or "-"}}</td>
                                             <td>{{$score['systolic_bp']}}</td>
-                                            <td>{{$assessment->systolic_bp}}</td>
                                         </tr>
                                         <tr>
                                             <td>CRFT</td>
+                                            <td>{{$assessment->crft or "-"}}</td>
                                             <td>{{$score['crft']}}</td>
-                                            <td>{{$assessment->crft}}</td>
                                         </tr>
                                         <tr style="border-bottom-style: double">
                                             <td>AVPU</td>
+                                            <td>{{$assessment->avpu or "-"}}</td>
                                             <td>{{$score['avpu']}}</td>
-                                            <td>{{$assessment->avpu}}</td>
                                         </tr>
                                         <tr style="font-family: bold; border-bottom-style: double">
                                             <td>Total PEWS Score</td>

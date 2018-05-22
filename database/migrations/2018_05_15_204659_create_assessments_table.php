@@ -27,7 +27,7 @@ class CreateAssessmentsTable extends Migration
             $table->unsignedInteger("nurse_id")->references("id")->on("nurses");
             $table->unsignedInteger("patient_id")->references("id")->on("patients");
             $table->unsignedInteger("admission_id")->references("id")->on("admissions.");
-            $table->string("complain");
+            $table->string("complain")->nullable();
             $table->string("discharge")->default("discharged");
         });
     }

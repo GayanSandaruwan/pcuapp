@@ -100,16 +100,18 @@ class NurseController extends Controller
 //            'avpu' => 'required',
 //            'crft'=>'required',
 //        ]);
+        print $data['resp_rate'];
         return Validator::make($data, [
-            'resp_rate' => 'numeric|between:0,300',
+            'complain'=>'max:255',
+            'resp_rate' => 'between:0,300',
             'resp_effort' => 'max:8',
-            'spo2' => 'numeric|between:0,100',
+            'spo2' => 'between:0,100',
             'o2_liters' =>'max:3',
-            'heart_rate' => 'numeric|between:0,300',
-            'systolic_bp' => 'numeric|between:0,300',
+            'heart_rate' => 'between:0,300',
+            'systolic_bp' => 'between:0,300',
             'patient_id' => 'exists:patients,id',
-            'avpu' => 'required',
-            'crft'=>'required',
+//            'avpu' => '',
+//            'crft'=>'',
         ]);
     }
 }
