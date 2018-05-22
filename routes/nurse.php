@@ -23,5 +23,14 @@ Route::group(['middleware' => ['web', 'nurse',]], function () {
 
     Route::get('/assessment/print/{assessment_id}',"AssessmentController@getAssessmentPrint");
 
+    Route::get('/search',"SearchController@getSearchPage");
+
+    Route::get('/search/{search}',"SearchController@searchPatients");
+
+    Route::get('/patient/assessments/{admission_id}',"SearchController@getAssessments");
+
+    Route::post('/search',"SearchController@searchPage");
+
+
 
 });

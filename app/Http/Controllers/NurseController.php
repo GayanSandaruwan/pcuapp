@@ -89,14 +89,25 @@ class NurseController extends Controller
     }
     protected function assessmentValidator(array $data)
     {
+//        return Validator::make($data, [
+//            'resp_rate' => 'requirednumeric|between:0,300',
+//            'resp_effort' => 'required|max:8',
+//            'spo2' => 'required|numeric|between:0,100',
+//            'o2_liters' =>'required|max:3',
+//            'heart_rate' => 'required|numeric|between:0,300',
+//            'systolic_bp' => 'required|numeric|between:0,300',
+//            'patient_id' => 'required|exists:patients,id',
+//            'avpu' => 'required',
+//            'crft'=>'required',
+//        ]);
         return Validator::make($data, [
-            'resp_rate' => 'required|numeric|between:0,300',
-            'resp_effort' => 'required|max:8',
-            'spo2' => 'required|numeric|between:0,100',
-            'o2_liters' =>'required|max:3',
-            'heart_rate' => 'required|numeric|between:0,300',
-            'systolic_bp' => 'required|numeric|between:0,300',
-            'patient_id' => 'required|exists:patients,id',
+            'resp_rate' => 'numeric|between:0,300',
+            'resp_effort' => 'max:8',
+            'spo2' => 'numeric|between:0,100',
+            'o2_liters' =>'max:3',
+            'heart_rate' => 'numeric|between:0,300',
+            'systolic_bp' => 'numeric|between:0,300',
+            'patient_id' => 'exists:patients,id',
             'avpu' => 'required',
             'crft'=>'required',
         ]);

@@ -16,4 +16,5 @@ class Assessment extends Model
     public function admission(){
         return $this->belongsTo('App\Admission');
     }
+
 }

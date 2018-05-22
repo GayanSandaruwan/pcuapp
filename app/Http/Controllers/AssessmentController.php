@@ -66,6 +66,9 @@ class AssessmentController extends Controller
 
     private function heartRateScore(Assessment $assessment,$age){
         $heart_rate = $assessment->heart_rate;
+        if($heart_rate== null){
+            return 0;
+        }
         $score = 0;
         if($age->y >= 12){
             switch ($heart_rate){
@@ -206,6 +209,10 @@ class AssessmentController extends Controller
     }
     private function systolicBPScore(Assessment $assessment, $age){
         $systolic_bp = $assessment->systolic_bp;
+        if($systolic_bp== null){
+            return 0;
+        }
+
         $score = 0;
 
         if($age->y >= 12){
@@ -357,6 +364,9 @@ class AssessmentController extends Controller
     }
     private function respRateScore(Assessment $assessment,$age){
         $resp_rate = $assessment->resp_rate;
+        if($resp_rate== null){
+            return 0;
+        }
         $score = 0;
         if($age->y >= 12){
             switch ($resp_rate){
@@ -493,6 +503,9 @@ class AssessmentController extends Controller
          * spo2 = saturation of partial oxygen
          */
         $spo2 = $assessment->spo2;
+        if($spo2== null){
+            return 0;
+        }
         $score = 0;
             switch ($spo2){
                 case $spo2>=94:
@@ -516,6 +529,9 @@ class AssessmentController extends Controller
          * o2_liters -> Oxygen flow rate
          */
         $o2_liters = $assessment->o2_liters;
+        if($o2_liters== null){
+            return 0;
+        }
         $score = 0;
         if(strcmp($o2_liters,"<2L")==0){
             $score = 1;
@@ -530,6 +546,9 @@ class AssessmentController extends Controller
          * Mild , Moderate falls under same category
          */
         $resp_effort = $assessment->resp_effort;
+        if($resp_effort== null){
+            return 0;
+        }
         $score = 0;
         if(strcmp($resp_effort,"mild")==0){
             $score = 1;
@@ -547,6 +566,9 @@ class AssessmentController extends Controller
          * Mild , Moderate falls under same category
          */
         $avpu = $assessment->avpu;
+        if($avpu== null){
+            return 0;
+        }
         $score = 0;
         if(strcmp($avpu,"alert")==0){
             $score = 1;
@@ -564,6 +586,9 @@ class AssessmentController extends Controller
          * Mild , Moderate falls under same category
          */
         $crft = $assessment->crft;
+        if($crft== null){
+            return 0;
+        }
         $score = 0;
         if(strcmp($crft,"<2sec")==0){
             $score = 0;

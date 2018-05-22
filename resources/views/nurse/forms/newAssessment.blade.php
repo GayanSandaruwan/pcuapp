@@ -38,7 +38,7 @@
                                 <label for="name" class="col-md-3 ">Resp. Rate</label>
 
                                 <div class="col-md-6">
-                                    <input id="resp_rate" type="number" class="form-control" name="resp_rate" value="{{old('resp_rate')}}" min="0" max="300" required>
+                                    <input id="resp_rate" type="number" class="form-control" name="resp_rate" value="{{old('resp_rate')}}" min="0" max="300" >
 
                                     @if ($errors->has('resp_rate'))
                                         <span class="help-block">
@@ -52,7 +52,7 @@
                                 <label for="name" class="col-md-3 ">SPO2</label>
 
                                 <div class="col-md-6">
-                                    <input id="spo2" type="number" class="form-control" name="spo2" value="{{old('spo2')}}" min="0" max="100" required>
+                                    <input id="spo2" type="number" class="form-control" name="spo2" value="{{old('spo2')}}" min="0" max="100" >
 
                                     @if($errors->has('spo2'))
                                         <span class="help-block">
@@ -66,7 +66,7 @@
                                 <label for="name" class="col-md-3 ">Heart Rate</label>
 
                                 <div class="col-md-6">
-                                    <input id="heart_rate" type="number" class="form-control" name="heart_rate" value="{{old('heart_rate')}}" min="0" max="300" required>
+                                    <input id="heart_rate" type="number" class="form-control" name="heart_rate" value="{{old('heart_rate')}}" min="0" max="300" >
 
                                     @if ($errors->has('heart_rate'))
                                         <span class="help-block">
@@ -79,7 +79,7 @@
                                 <label for="name" class="col-md-3 ">Systolic bp</label>
 
                                 <div class="col-md-6">
-                                    <input id="systolic_bp" type="number" class="form-control" name="systolic_bp" value="{{old('systolic_bp')}}" min="0" max="300" required>
+                                    <input id="systolic_bp" type="number" class="form-control" name="systolic_bp" value="{{old('systolic_bp')}}" min="0" max="300" >
 
                                     @if ($errors->has('systolic_bp'))
                                         <span class="help-block">
