@@ -11,19 +11,49 @@
                             <div class="row"><p>Date : Time : &nbsp; {{$patient->created_at}}</p></div>
                             <div class="row"><p>Admission No : {{$admission->admission_no}}</p></div>
                             <div class="row justify-content-md-center">
-                                <div class="col col-md-12">
+                                <div class="col col-md-8">
                                     <h4 style="font-weight: bold;font-size: 16pt">Priliminary care unit- Patient Assessment Record</h4>
                                 </div>
                             </div>
-                            <div class="row"><p>Name : &nbsp; {{$patient->name}}</p></div>
-                            <div class="row"><p>Age (on the date patient registered) : &nbsp; {{$patient->age->y}} Years {{$patient->age->m}} Months {{$patient->age->d}} Days</p></div>
-                            <div class="row"><p>Gender : &nbsp; {{$patient->gender}}</p></div>
-                            <div class="row"><p>Address : &nbsp; {{$patient->address}}</p></div>
-                            <div class="row"><p>Contact No : {{$patient->contact_no}}</p></div>
-                            <div class="row"><p>Source Of patient to PCU : &nbsp; {{$patient->area}}</p></div>
-                            <div class="row"><p>Presenting complain : &nbsp; {{$assessment->complain}}</p></div>
-                            <div class="row"><p>Clinical Parameters :</p></div>
                             <div class="row">
+                                <div class="col col-md-12">
+                                    <p>Name : &nbsp; {{$patient->name}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-md-12">
+                                    <p>Age (on the date patient registered) : &nbsp; {{$patient->age->y}} Years {{$patient->age->m}} Months {{$patient->age->d}} Days</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-md-6">
+                                    <p>Gender : &nbsp; {{$patient->gender}}</p>
+                                </div>
+                                <div class="col col-md-6">
+                                    <p>Contact No : {{$patient->contact_no or "-"}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-md-12">
+                                    <p>Address : &nbsp; {{$patient->address}}</p>                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-md-6">
+                                    <p>Source Of patient to PCU : &nbsp; {{$patient->area}}</p>                                </div>
+                                <div class="col col-md-6">
+                                    <p>Presenting complain : &nbsp; {{$assessment->complain or "-"}}</p>                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-md-6">
+                                    <p>Body weight: &nbsp; {{$assessment->weight or "-"}}</p>                                </div>
+                                <div class="col col-md-6">
+                                    <p>Body Temperature : &nbsp; {{$assessment->temperature or "-"}}</p>                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-md-12">
+                                    <p>Clinical Parameters :</p>
+                                </div>
+                            <div class="row justify-content-md-center">
                                 <div class="col-md-7" id="table" style=" font-size: 12pt;">
                                     <table class="table table-striped" >
                                         <thead>

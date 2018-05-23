@@ -74,11 +74,18 @@ class LoginController extends Controller
     public function loginWithFilter(Request $request){
         $this->validateLogin($request);
         $nurse = Nurse::find(1)->where("username",$request->username)->first();
-//        var_dump($nurse);
-        $status = $nurse->status;
-        if(strcmp($status,"active")!=0){
-            return view('nurse.auth.accountDeactive');
+        if($nurse != null){
+
+            $status = $nurse->status;
+            if(strcmp($status,"active")!=0){
+                return view('nurse.auth.accountDeactive');
+            }
+            else{
+                return $this->login($request);
+            }
         }
+//        var_dump($nurse);
+
         else{
             return $this->login($request);
         }

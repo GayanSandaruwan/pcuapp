@@ -23,15 +23,24 @@ class NurseController extends Controller
             'area' =>'required',
             'gender' => 'required',
             'admission_no' => 'required|unique:admissions',
-            'contact_no' =>'required|min:9|max:10'
+            'contact_no' =>'nullable|numeric|min:0100000000|max:1000000000'
         ]);
     }
 
     public function addPatient(Request $request){
         $this->validator($request->all())->validate();
 
+        //Validating for presence of either age or birthday
+//        if($request->age ==null && $request->birthday == null){
+//            $errors = new \stdClass();
+//            $errors->age = "Both age and birthday can't be kept empty";
+//            $errors->birthday = "Both age and birthday can't be kept empty";
+//            return view('nurse.forms.patient')->with(["errors"=>$errors,"old"=>$request]);
+//        }
+
+
+
         $patient = new Patient();
-//        $patient->admission_no = $request->admission_no;
         $patient->name = $request->name;
         $birthday = date('Y-m-d', strtotime(str_replace('/', '-', $request->birthday)));
 
@@ -76,6 +85,8 @@ class NurseController extends Controller
         $assessment->systolic_bp = $request->systolic_bp;
         $assessment->avpu = $request->avpu;
         $assessment->crft = $request->crft;
+        $assessment->weight = $request->weight;
+        $assessment->temperature = $request->temperature;
 
         $assessment->nurse_id = Auth::guard('nurse')->user()->id;
         $assessment->patient_id = $request->patient_id;
@@ -110,6 +121,8 @@ class NurseController extends Controller
             'heart_rate' => 'between:0,300',
             'systolic_bp' => 'between:0,300',
             'patient_id' => 'exists:patients,id',
+            'weight' => 'between:0,120',
+            'temperature' =>'between:-10,150',
 //            'avpu' => '',
 //            'crft'=>'',
         ]);

@@ -88,6 +88,32 @@
                                     @endif
                                 </div>
                             </div>
+                            <div class="row justify-content-md-center{{ $errors->has('weight') ? ' text-danger' : '' }} mb-3">
+                                <label for="name" class="col-md-3 ">Weight (kg)</label>
+
+                                <div class="col-md-6">
+                                    <input id="weight" type="number" class="form-control" name="weight" value="{{old('weight')}}" min="0" max="120" step="0.01">
+
+                                    @if ($errors->has('weight'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('weight') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="row justify-content-md-center{{ $errors->has('temperature') ? ' text-danger' : '' }} mb-3">
+                                <label for="name" class="col-md-3 ">Temperature (*F)</label>
+
+                                <div class="col-md-6">
+                                    <input id="temperature" type="number" class="form-control" name="temperature" value="{{old('temperature')}}" min="-10" max="150" step="0.01">
+
+                                    @if ($errors->has('temperature'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('temperature') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
                             <div class="row justify-content-md-center{{ $errors->has('resp_effort') ? ' text-danger' : '' }} mb-3">
                                 <label for="name" class="col-md-3">Resp. Effort</label>
 
