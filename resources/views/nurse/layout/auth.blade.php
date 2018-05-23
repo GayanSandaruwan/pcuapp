@@ -43,7 +43,7 @@
 <body>
 <header>
     <nav class="mb-1 navbar navbar-expand-lg navbar-dark cyan">
-        <a class="navbar-brand" href="javascript:;;">PCU App</a>
+        <a class="navbar-brand" href="{{url("/nurse/home")}}">PCU App Home</a>
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

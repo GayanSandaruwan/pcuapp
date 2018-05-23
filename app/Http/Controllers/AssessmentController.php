@@ -49,8 +49,7 @@ class AssessmentController extends Controller
 //                    " AVPU Score : ".$avpu_score." CRFT Score : ".$crft_score." Total Score : ".$total_score;
                 $nurse = $assessment->nurse()->first()->name;
 
-                return view('nurse.forms.printAssessment')
-                    ->with(['patient'=>$patient,'assessment'=>$assessment,'score'=>$score,'recomendation'=>$recomendation,'nurse'=>$nurse,'admission'=>$admission]);
+                return ['patient'=>$patient,'assessment'=>$assessment,'score'=>$score,'recomendation'=>$recomendation,'nurse'=>$nurse,'admission'=>$admission];
             }
             else{
                 return abort(404);
@@ -651,6 +650,48 @@ class AssessmentController extends Controller
     }
 
     public function getAssessmentPrint(Request $request,$assessment_id){
-        return $this->calculateScore($assessment_id);
+        return view('nurse.forms.printAssessment')
+            ->with($this->calculateScore($assessment_id));
     }
+
+
+    public function getCriticalAssessments(){
+        $assessments = Assessment::where("discharge","false")->orderBy("created_at","DESC")->get();
+
+        $score_calculated = array();
+        foreach ($assessments as $assessment){
+            array_push($score_calculated,$this->calculateScore($assessment->id));
+        }
+
+        $critically_sorted = array_reverse($this->insertion_Sort($score_calculated));
+//        var_dump( $critically_sorted);
+
+        return $critically_sorted;
+    }
+
+
+    function insertion_Sort($my_array)
+    {
+        $length = count($my_array);
+        for($i=0;$i<$length;$i++){
+            $val = $my_array[$i]["score"]["total"];
+            $j = $i-1;
+            while($j>=0 && $my_array[$j]["score"]["total"] > $val){
+                $my_array[$j+1]["score"]["total_score"] = $my_array[$j]["score"]["total"];
+                $j--;
+            }
+            $my_array[$j+1]["score"]["total"] = $val;
+        }
+        return $my_array;
+    }
+
+    public function dischargeAssessment(Request $request,$assessment_id){
+
+        $assessment = Assessment::where("id",$assessment_id)->first();
+        $assessment->discharge = "true";
+//        echo $assessment;
+        $assessment->save();
+        return redirect("/nurse/home");
+    }
+
 }

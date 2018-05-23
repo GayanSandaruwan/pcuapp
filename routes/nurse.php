@@ -6,8 +6,9 @@ Route::get('/home', function () {
     $users[] = Auth::guard('nurse')->user();
 
     //dd($users);
+    $assessmen_controller = new \App\Http\Controllers\AssessmentController();
 
-    return view('nurse.home');
+    return view('nurse.home')->with(["critical_patients"=>$assessmen_controller->getCriticalAssessments()]);
 })->name('home');
 
 Route::group(['middleware' => ['web', 'nurse',]], function () {
@@ -31,6 +32,8 @@ Route::group(['middleware' => ['web', 'nurse',]], function () {
 
     Route::post('/search',"SearchController@searchPage");
 
+    Route::get("/critical/patients","AssessmentController@getCriticalAssessments");
 
+    Route::get("/patient/assessments/discharge/{assessment_id}","AssessmentController@dischargeAssessment");
 
 });
