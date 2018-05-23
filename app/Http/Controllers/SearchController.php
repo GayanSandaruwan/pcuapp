@@ -17,14 +17,24 @@ class SearchController extends Controller
         $patients_by_name = DB::table('patients')
             ->join('admissions','patients.id','=','admissions.patient_id')
             ->select('patients.*','admissions.admission_no','admissions.id as admission_id')
-            ->where(DB::raw('LOWER(name)'),'LIKE','%'.strtolower($search).'%');
+            ->where(DB::raw('LOWER(name)'),'LIKE','%'.strtolower($search).'%')
+            ->orderByRaw("CASE
+                        WHEN LOWER(name) LIKE '".$search."%' THEN 1
+                        WHEN LOWER(name) LIKE '%".$search."' THEN 3
+                        ELSE 2
+                      END");
         $patients_by_admission_no = DB::table('patients')
             ->join('admissions','patients.id','=','admissions.patient_id')
             ->select('patients.*','admissions.admission_no','admissions.id as admission_id')
-            ->where(DB::raw('LOWER(admission_no)'),'LIKE','%'.strtolower($search).'%');
+            ->where(DB::raw('LOWER(admission_no)'),'LIKE','%'.strtolower($search).'%')
+            ->orderByRaw("CASE
+                        WHEN LOWER(name) LIKE '".$search."%' THEN 1
+                        WHEN LOWER(name) LIKE '%".$search."' THEN 3
+                        ELSE 2
+                      END");
 
         $patients = $patients_by_admission_no->union($patients_by_name)
-            ->get();
+                                                ->get();
 //        echo $patients;
         return view('nurse.forms.searchResults')->with(["patients"=>$patients]);
     }
