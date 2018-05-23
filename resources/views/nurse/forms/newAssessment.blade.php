@@ -109,7 +109,7 @@
                                 </div>
                             </div>
                             <div class="row justify-content-md-center{{ $errors->has('resp_effort') ? ' text-danger' : '' }} mb-3">
-                                <label for="name" class="col-md-3">Resp. Effort</label>
+                                <label for="avpu_label" class="col-md-3">AVPU</label>
 
                                 <div class="col-md-6">
                                     <label class="btn btn-default" style="padding-left: 5%; padding-right: 5%" >

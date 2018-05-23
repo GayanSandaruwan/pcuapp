@@ -29,12 +29,12 @@
                                         <div class="row">
                                             <div class="col-lg-5 col-md-12">
                                                 <div class="md-form">
-                                                    <label for="admission_no" class="">Date Created : {{$assessment->created_at}}</label>
+                                                    <label for="date_created" class="">Date Created : {{$assessment->created_at}}</label>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4 col-md-6">
                                                 <div class="md-form">
-                                                    <label for="contact_no" class="">Contact: {{$assessment->complain}}</label>
+                                                    <label for="complain" class="">Complain : {{$assessment->complain}}</label>
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-md-6">
