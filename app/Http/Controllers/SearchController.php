@@ -22,7 +22,7 @@ class SearchController extends Controller
                         WHEN LOWER(name) LIKE '".$search."%' THEN 1
                         WHEN LOWER(name) LIKE '%".$search."' THEN 3
                         ELSE 2
-                      END)");
+                      END),name");
         $patients_by_admission_no = DB::table('patients')
             ->join('admissions','patients.id','=','admissions.patient_id')
             ->select('patients.*','admissions.admission_no','admissions.id as admission_id')
@@ -31,7 +31,7 @@ class SearchController extends Controller
                         WHEN LOWER(admission_no) LIKE '".$search."%' THEN 1
                         WHEN LOWER(admission_no) LIKE '%".$search."' THEN 3
                         ELSE 2
-                      END)");
+                      END),name");
 
         $patients = $patients_by_admission_no->union($patients_by_name)
                                                 ->get();
