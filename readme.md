@@ -1,5 +1,3 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
-
 ## About Project 
 
 This project is focused on to develop a sytem for hospitals to record and monitor the assesment reports about the patients. Main users of the system are ,
