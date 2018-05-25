@@ -53,8 +53,8 @@
                                                     <td>
                                                         {{$record['assessment']->resp_rate or "-"}} ,  {{$record['assessment']->resp_effort or "-"}} ,
                                                         {{$record['assessment']->o2_liters or "-"}} , {{$record['assessment']->spo2 or "-"}} ,
-                                                        {{$record['assessment']->heart_rate or "-"}}, {{$record['assessment']->systolica_bp or "-"}} ,
-                                                        {{$record['assessment']->crft or "-"}} , {{$record['assessment']->avpu or "-"}} ,
+                                                        {{$record['assessment']->heart_rate or "-"}}, {{$record['assessment']->systolic_bp or "-"}} ,
+                                                        {{$record['assessment']->crft or "-"}} , {{$record['assessment']->avpu or "-"}}
 
                                                     </td>
                                                     <td>
@@ -67,6 +67,13 @@
                                                 @endforeach
                                         </tbody>
                                     </table>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-s8">
+                                        <p>
+                                            *Clinical Parameters : Respiratory Rate, Respiratory Effort, O2 Rate, SPO2,  Heart Rate, Systolic BP, CRFT, AVPU
+                                        </p>
+                                    </div>
                                 </div>
 
                             </div>
