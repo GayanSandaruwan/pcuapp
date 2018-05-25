@@ -75,16 +75,13 @@
                                         </p>
                                     </div>
                                 </div>
-
                             </div>
-                               </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            {{--<div class="" >--}}
             <div class="btn btn-default" style="position: fixed;right:5%; top: 10% " onclick="PrintElem()"><span class="fa fa-print"> Print </span></div> </div>
-        {{--</div>--}}
-    </div>
+        </div>
     </div>
     <script type="text/javascript">
         function PrintElem()
