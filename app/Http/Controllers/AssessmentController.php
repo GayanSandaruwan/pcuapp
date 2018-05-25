@@ -656,7 +656,9 @@ class AssessmentController extends Controller
 
 
     public function getCriticalAssessments(){
-        $assessments = Assessment::where("discharge","false")->whereRaw("DATEDIFF(CURDATE(),created_at)<=2")->orderBy("created_at","DESC")->get();
+        $assessments = Assessment::where("discharge","false")
+            ->whereRaw("DATEDIFF(NOW(),created_at)<=2")
+            ->orderBy("created_at","DESC")->get();
 
         $score_calculated = array();
         foreach ($assessments as $assessment){
