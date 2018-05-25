@@ -13,7 +13,6 @@
                                     <table class="table table-striped" >
                                         <thead>
                                         <tr>
-
                                             <th>Asses. Date</th>
                                             <th>Time of Admission</th>
                                             <th>Name</th>
@@ -21,8 +20,7 @@
                                             <th>Gender</th>
                                             <th>Address</th>
                                             <th>Presenting Complaint</th>
-                                            <th>Resp Rate</th>
-                                            <th>Resp Effort</th>
+                                            <th>Resp Rate,Effort</th>
                                             <th>O2 Sat</th>
                                             <th>SPO2</th>
                                             <th>Heart Rate</th>
@@ -59,10 +57,7 @@
                                                         {{$record['assessment']->complain or "-"}}
                                                     </td>
                                                     <td>
-                                                        {{$record['assessment']->resp_rate or "-"}}
-                                                    </td>
-                                                    <td>
-                                                        {{$record['assessment']->resp_effort or "-"}}
+                                                        {{$record['assessment']->resp_rate or "-"}} ,  {{$record['assessment']->resp_effort or "-"}}
                                                     </td>
                                                     <td>
                                                         {{$record['assessment']->o2_liters or "-"}}
