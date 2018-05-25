@@ -705,8 +705,8 @@ class AssessmentController extends Controller
         $end = date('Y-m-d',strtotime($end_date));
 
 //        echo $start;
-        $assessments = Assessment::where("discharge","true")
-            ->where("created_at",">=",$start)
+        $assessments = Assessment::where("created_at",">=",$start)
+//            ->where("discharge","true")
             ->where("created_at","<=",$end)
             ->orderBy("patient_id")
             ->orderBy("created_at","ASC")->get();
