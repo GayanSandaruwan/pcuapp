@@ -14,7 +14,8 @@ class Patient extends Model
         $age = 0;
         date_default_timezone_set('Asia/Colombo');
 //        $d1 = new DateTime('2011-03-12');
-        $now = date('d-m-Y');
+//        $now = date('d-m-Y');
+        $now = $this->created_at;
         $d1 = new \DateTime($now);
         $d2 = new \DateTime($this->birthday);
 

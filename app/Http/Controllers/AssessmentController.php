@@ -656,7 +656,7 @@ class AssessmentController extends Controller
 
 
     public function getCriticalAssessments(){
-        $assessments = Assessment::where("discharge","false")->orderBy("created_at","DESC")->get();
+        $assessments = Assessment::where("discharge","false")->whereRaw("DATEDIFF(CURDATE(),created_at)<=2")->orderBy("created_at","DESC")->get();
 
         $score_calculated = array();
         foreach ($assessments as $assessment){
@@ -688,10 +688,32 @@ class AssessmentController extends Controller
     public function dischargeAssessment(Request $request,$assessment_id){
 
         $assessment = Assessment::where("id",$assessment_id)->first();
+        if($assessment == null){
+            return abort(404);
+        }
         $assessment->discharge = "true";
+        $assessment->discharge_note = $request->discharge_note;
+        $assessment->condition = $request->condition;
 //        echo $assessment;
         $assessment->save();
         return redirect("/nurse/home");
+    }
+
+
+    public function getPatientRegister(Request $request,$start_date,$end_date){
+        $assessments = Assessment::where("created_at",">=",$start_date)
+            ->where("created_at","<=",$end_date)
+            ->orderBy("patient_id")
+            ->orderBy("created_at","ASC")->get();
+        if ($assessments ==null){
+            return abort(404);
+        }
+        $score_calculated = array();
+        foreach ($assessments as $assessment){
+            array_push($score_calculated,$this->calculateScore($assessment->id));
+        }
+        return view("nurse.forms.admissionRegister")->with(['records'=>$score_calculated]);
+//        return $score_calculated;
     }
 
 }

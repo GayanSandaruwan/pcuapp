@@ -62,9 +62,10 @@
                                                 </a>
                                             </div>
                                             <div class="col-md-4">
-                                                <a href="{{url("/nurse/patient/assessments/discharge")}}/{{$critical_patient["assessment"]->id}}" class="btn btn-outline-primary btn-md dc-panel-remove" id="docs-newsletter-removed">
-                                                    Discharge<i class="fa fa-window-close ml-2"></i>
-                                                </a>
+                                                <!-- Button trigger modal -->
+                                                <button type="button" class="btn btn-green" data-toggle="modal" data-target="#discharge-model">
+                                                    <i class="fa fa-window-close ">Discharge</i>
+                                                </button>
                                             </div>
                                         </div>
 
@@ -85,6 +86,65 @@
                                 </div>
                             </div>
                         </section>
+                        <!-- Modal -->
+                        <div class="modal fade" id="discharge-model" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <form id="modal-confirm-discharge" action="{{url("/nurse/patient/assessments/discharge")}}/{{$critical_patient["assessment"]->id}}" role="form" method="POST">
+                                    {{ csrf_field() }}
+                                <div class="modal-content ">
+                                    <div class="modal-header warning-color text-center">
+                                        <h5 class="modal-title" id="exampleModalLabel" >Are you sure to discharge this patient ?</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <div class="row justify-content-md-center mb-3">
+                                            <label for="name" class="col-md-3 ">Discharge note</label>
+
+                                            <div class="col-md-6">
+                                                <input id="condition" type="text" class="form-control" name="discharge_note" value="{{old('discharge_note')}}">
+
+                                                @if ($errors->has('discharge_note'))
+                                                    <span class="help-block">
+                                                            <strong>{{ $errors->first('discharge_note') }}</strong>
+                                                        </span>
+                                                @endif
+                                            </div>
+                                            <div class="row justify-content-md-center{{ $errors->has('condition') ? ' text-danger' : '' }} mb-3">
+                                                <label for="name" class="col-md-3">Condition</label>
+
+                                                <div class="col-md-6">
+                                                    <label class="btn btn-info" >
+                                                        <input name="condition" id="condition" value="false" type="radio"> Normal
+                                                    </label>
+                                                    <label class="btn btn-info">
+                                                        <input name="condition" id="condition" value="true" type="radio"> Critical
+                                                    </label>
+                                                    @if ($errors->has('condition'))
+                                                        <span class="help-block">
+                                        <strong>{{ $errors->first('condition') }}</strong>
+                                    </span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input id="patient_id" value="{{$critical_patient["patient"]->id}}" type="hidden">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">
+                                                Discharge <i class="fa fa-window-close ml-2"></i>
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+
                     @endforeach
                 </div>
             </div>
