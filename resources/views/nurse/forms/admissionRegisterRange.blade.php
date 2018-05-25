@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid" >
         <div class="row">
-            <div class="col-md-8 float-md-none mx-auto">
+            <div class="col-md-7 float-md-none mx-auto">
                 <div class="card card-default" >
                     <div class="card-header success-color white-text" style="background-color: #67b168; text-align:center; font-weight: bold; font-size: 200%">Select date range for patient register <span class="fa fa-calendar-alt"></span> </div>
                     <div class="card-body" style="padding-top: 10%">
@@ -12,7 +12,7 @@
 
 
                             <div class="row justify-content-md-center{{ $errors->has('birthday') ? ' text-danger' : '' }} mb-3">
-                                <label for="grade" class="col-md-3">Birthday</label>
+                                <label for="grade" class="col-md-3">Start Date (From)</label>
 
                                 <div class="col-md-6">
                                     {{--<div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-start-date="-12y">--}}
@@ -38,7 +38,7 @@
 
                             </div>
                             <div class="row justify-content-md-center{{ $errors->has('end_date') ? ' text-danger' : '' }} mb-3">
-                                <label for="grade" class="col-md-3">Birthday</label>
+                                <label for="grade" class="col-md-3">End Date (To)</label>
 
                                 <div class="col-md-6">
                                     {{--<div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-start-date="-12y">--}}
@@ -64,7 +64,7 @@
 
                             </div>
                             <div class="row justify-content-md-center">
-                                <div class="col-md-8 col-md-offset-4">
+                                <div class="col-md-4 ">
                                     <button type="submit" class="btn btn-primary">
                                         Submit
                                     </button>
