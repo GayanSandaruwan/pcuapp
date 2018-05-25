@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-12 float-md-none mx-auto">
                 <div class="card card-default" >
-                    <div class="card-header success-color white-text" style="background-color: #67b168; text-align:center; font-weight: bold; font-size: 200%">Priliminary care unit- Patient Assessment Register<span class="fa fa-wheelchair"></span> </div>
+                    <div class="card-header success-color white-text" style="background-color: #67b168; text-align:center; font-weight: bold; font-size: 200%">Priliminary care unit- Patient Register<span class="fa fa-wheelchair"></span> </div>
                     <div class="card-body" style="padding-bottom: 0%; font-size: 12pt;" >
                         <div class="container" id="admission-report-print">
                             <div class="row justify-content-md-center">
