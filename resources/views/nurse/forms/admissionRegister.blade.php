@@ -9,7 +9,7 @@
                     <div class="card-body" style="padding-bottom: 0%; font-size: 12pt;" >
                         <div class="container" id="admission-report-print">
                             <div class="row justify-content-md-center">
-                                <div class="col-md-12" id="table" style=" font-size: 12pt;">
+                                <div class="col-md-12" id="table" style=" font-size: 10pt;">
                                     <table class="table table-striped" >
                                         <thead>
                                         <tr>
