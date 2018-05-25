@@ -13,19 +13,14 @@
                                     <table class="table table-striped" >
                                         <thead>
                                         <tr>
-                                            <th>Asses. Date</th>
-                                            <th>Time of Admission</th>
+                                            <th>Date of Admission</th>
                                             <th>Name</th>
                                             <th>Age</th>
                                             <th>Gender</th>
+                                            <th>Admission No</th>
                                             <th>Address</th>
                                             <th>Presenting Complaint</th>
-                                            <th>Resp Rate,Effort</th>
-                                            <th>O2 Sat,SPO2</th>
-                                            <th>Heart Rate</th>
-                                            <th>Systolic Bp</th>
-                                            <th>CRFT</th>
-                                            <th>AVPU</th>
+                                            <th>Clinical Parameters of patient</th>
                                             <th>Score</th>
                                             <th>Discharge Note</th>
 
@@ -34,9 +29,6 @@
                                         <tbody>
                                             @foreach($records as $record)
                                                 <tr>
-                                                    <td>
-                                                        {{$record['admission']->created_at}}
-                                                    </td>
                                                     <td>
                                                         {{$record['patient']->created_at}}
                                                     </td>
@@ -50,28 +42,20 @@
                                                         {{$record['patient']->gender or "-"}}
                                                     </td>
                                                     <td>
+                                                        {{$record['admission']->admission_no}}
+                                                    </td>
+                                                    <td>
                                                         {{$record['patient']->address or "-"}}
                                                     </td>
                                                     <td>
                                                         {{$record['assessment']->complain or "-"}}
                                                     </td>
                                                     <td>
-                                                        {{$record['assessment']->resp_rate or "-"}} ,  {{$record['assessment']->resp_effort or "-"}}
-                                                    </td>
-                                                    <td>
-                                                        {{$record['assessment']->o2_liters or "-"}} , {{$record['assessment']->spo2 or "-"}}
-                                                    </td>
-                                                    <td>
-                                                        {{$record['assessment']->heart_rate or "-"}}
-                                                    </td>
-                                                    <td>
-                                                        {{$record['assessment']->systolica_bp or "-"}}
-                                                    </td>
-                                                    <td>
-                                                        {{$record['assessment']->crft or "-"}}
-                                                    </td>
-                                                    <td>
-                                                        {{$record['assessment']->avpu or "-"}}
+                                                        {{$record['assessment']->resp_rate or "-"}} ,  {{$record['assessment']->resp_effort or "-"}} ,
+                                                        {{$record['assessment']->o2_liters or "-"}} , {{$record['assessment']->spo2 or "-"}} ,
+                                                        {{$record['assessment']->heart_rate or "-"}}, {{$record['assessment']->systolica_bp or "-"}} ,
+                                                        {{$record['assessment']->crft or "-"}} , {{$record['assessment']->avpu or "-"}} ,
+
                                                     </td>
                                                     <td>
                                                         {{$record['score']['total'] or "-"}}

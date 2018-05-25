@@ -104,8 +104,7 @@
                                             <label for="name" class="col-md-3 ">Discharge note</label>
 
                                             <div class="col-md-6">
-                                                <input id="condition" type="text" class="form-control" name="discharge_note" value="{{old('discharge_note')}}">
-
+                                                    <textarea name="discharge_note" class="form-control rounded-0" id="discharge_note" rows="3"></textarea>
                                                 @if ($errors->has('discharge_note'))
                                                     <span class="help-block">
                                                             <strong>{{ $errors->first('discharge_note') }}</strong>
