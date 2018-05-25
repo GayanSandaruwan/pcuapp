@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Assessment;
 use App\Patient;
 use Illuminate\Http\Request;
+use Validator;
 
 class AssessmentController extends Controller
 {
