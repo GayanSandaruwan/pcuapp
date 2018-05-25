@@ -30,6 +30,8 @@
                                             <th>CRFT</th>
                                             <th>AVPU</th>
                                             <th>Score</th>
+                                            <th>Discharge Note</th>
+
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -82,6 +84,9 @@
                                                     </td>
                                                     <td>
                                                         {{$record['score']['total'] or "-"}}
+                                                    </td>
+                                                    <td>
+                                                        {{$record['assessment']->discharge_note or "-"}}
                                                     </td>
                                                 </tr>
                                                 @endforeach
