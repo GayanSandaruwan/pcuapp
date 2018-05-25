@@ -21,7 +21,6 @@
                                             <th>Gender</th>
                                             <th>Address</th>
                                             <th>Presenting Complaint</th>
-                                            <th>Name</th>
                                             <th>Resp Rate</th>
                                             <th>Resp Effort</th>
                                             <th>O2 Sat</th>

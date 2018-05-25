@@ -61,6 +61,11 @@
                             <i class="fa fa-search"> Search patients</i>
                         </a>
                     </li>
+                    <li class="nav-item ">
+                        <a class="nav-link waves-effect waves-light" href="{{ url('/nurse/patient/register/range') }}">
+                            <i class="fa fa-list"> Patient Register</i>
+                        </a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-user"></i>  {{ Auth::user()->name }} </a>

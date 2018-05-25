@@ -37,4 +37,10 @@ Route::group(['middleware' => ['web', 'nurse',]], function () {
     Route::post("/patient/assessments/discharge/{assessment_id}","AssessmentController@dischargeAssessment");
 
     Route::get("patient/register/{start_date}/{end_date}","AssessmentController@getPatientRegister");
+
+    Route::post("/patient/admission/register","AssessmentController@getRegister");
+
+    Route::get("/patient/register/range",function (){
+        return view("nurse.forms.admissionRegisterRange");
+    });
 });

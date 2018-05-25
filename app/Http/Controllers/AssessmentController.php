@@ -701,8 +701,12 @@ class AssessmentController extends Controller
 
 
     public function getPatientRegister(Request $request,$start_date,$end_date){
-        $assessments = Assessment::where("created_at",">=",$start_date)
-            ->where("created_at","<=",$end_date)
+        $start = date('Y-m-d',strtotime($start_date));
+        $end = date('Y-m-d',strtotime($end_date));
+
+//        echo $start;
+        $assessments = Assessment::where("created_at",">=",$start)
+            ->where("created_at","<=",$end)
             ->orderBy("patient_id")
             ->orderBy("created_at","ASC")->get();
         if ($assessments ==null){
@@ -715,5 +719,15 @@ class AssessmentController extends Controller
         return view("nurse.forms.admissionRegister")->with(['records'=>$score_calculated]);
 //        return $score_calculated;
     }
+
+    public function getRegister(Request $request){
+
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+
+        return redirect("nurse/patient/register/".$start_date."/".$end_date);
+    }
+
+
 
 }
