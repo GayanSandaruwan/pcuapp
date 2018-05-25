@@ -38,7 +38,7 @@
                                                     View Reports<i class="fa fa-print ml-2"></i>
                                                 </a>
                                                 <!-- Button trigger modal -->
-                                                <button type="button" class="btn btn-green" data-toggle="modal" data-target="#discharge-model">
+                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#discharge-model">
                                                     <i class="fa fa-window-close ">Discharge</i>
                                                 </button>
                                             </div>
@@ -92,7 +92,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary">
+                                            <button type="submit" class="btn btn-danger">
                                                 Discharge <i class="fa fa-window-close ml-2"></i>
                                             </button>
 
