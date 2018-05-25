@@ -725,12 +725,20 @@ class AssessmentController extends Controller
 
     public function getRegister(Request $request){
 
+        $this->validator($request->all())->validate();
         $start_date = $request->start_date;
         $end_date = $request->end_date;
 
         return redirect("nurse/patient/register/".$start_date."/".$end_date);
     }
 
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
 
+        ]);
+    }
 
 }
