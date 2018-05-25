@@ -21,8 +21,7 @@
                                             <th>Address</th>
                                             <th>Presenting Complaint</th>
                                             <th>Resp Rate,Effort</th>
-                                            <th>O2 Sat</th>
-                                            <th>SPO2</th>
+                                            <th>O2 Sat,SPO2</th>
                                             <th>Heart Rate</th>
                                             <th>Systolic Bp</th>
                                             <th>CRFT</th>
@@ -60,10 +59,7 @@
                                                         {{$record['assessment']->resp_rate or "-"}} ,  {{$record['assessment']->resp_effort or "-"}}
                                                     </td>
                                                     <td>
-                                                        {{$record['assessment']->o2_liters or "-"}}
-                                                    </td>
-                                                    <td>
-                                                        {{$record['assessment']->spo2 or "-"}}
+                                                        {{$record['assessment']->o2_liters or "-"}} , {{$record['assessment']->spo2 or "-"}}
                                                     </td>
                                                     <td>
                                                         {{$record['assessment']->heart_rate or "-"}}
