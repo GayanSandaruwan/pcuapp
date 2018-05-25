@@ -123,22 +123,21 @@
                                                     </label>
                                                     @if ($errors->has('condition'))
                                                         <span class="help-block">
-                                        <strong>{{ $errors->first('condition') }}</strong>
-                                    </span>
+                                                            <strong>{{ $errors->first('condition') }}</strong>
+                                                        </span>
                                                     @endif
                                                 </div>
                                             </div>
                                         </div>
-                                        <input id="patient_id" value="{{$critical_patient["patient"]->id}}" type="hidden">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary">
-                                                Discharge <i class="fa fa-window-close ml-2"></i>
-                                            </button>
+                                        <button type="submit" class="btn btn-primary">
+                                            Discharge <i class="fa fa-window-close ml-2"></i>
+                                        </button>
 
-                                        </div>
                                     </div>
+
                                 </div>
                                 </form>
                             </div>
