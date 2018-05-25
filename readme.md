@@ -26,5 +26,5 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The PCU APP is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-## Auther
+## Author
 Gayan Sandaruwan De Silva , an undergraduate of University of Moratuwa
