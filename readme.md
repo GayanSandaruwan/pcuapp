@@ -7,7 +7,7 @@ This project is focused on to develop a sytem for hospitals to record and monito
 
 Nurses will use the system to add the details of the new patients and continously monitor and record their health conditions. Depending on the scores calculated considering various parameters including age nurses will be prompted with the correct action to be taken in the situation. Also, for the ease of use of the nurses, they can print the the assessment reports. More over weekly/daily reports on the patient conditions, automatically prompting the critcal patient list in dashboard will add more value to the system.
 System is to be testes for the usability and acceptability at Lady ridgway hospital.
-## Seeting up the project
+## Setting up the project
 Recommend to use a linux environment.
 Install composer. Then install laravel 5.5 through composer. Install all the dependencies using ``composer install``.
 Run ``php artisan migrate:install`` to create the migration table, then, to run the migrations run ``php artisan migrate``. To create the default admin and nurse to start the system, run ``php artisan db:seed``. Run the system on apache or on built in server using ``php artisan serve``.
