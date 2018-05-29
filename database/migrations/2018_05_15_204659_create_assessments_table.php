@@ -26,13 +26,19 @@ class CreateAssessmentsTable extends Migration
             $table->string('crft')->nullable();
             $table->decimal('weight')->nullable();
             $table->decimal('temperature')->nullable();
-            $table->unsignedInteger("nurse_id")->references("id")->on("nurses");
-            $table->unsignedInteger("patient_id")->references("id")->on("patients");
-            $table->unsignedInteger("admission_id")->references("id")->on("admissions.");
+            $table->unsignedInteger("nurse_id");        //->references("id")->on("nurses");
+            $table->unsignedInteger("patient_id");      //->references("id")->on("patients");
+            $table->unsignedInteger("admission_id");    //->references("id")->on("admissions.");
             $table->string("complain")->nullable();
             $table->string("discharge")->default("false");
             $table->string('condition')->nullable();
             $table->string('discharge_note')->nullable();
+
+            $table->foreign('patient_id')->references('id')->on('patients');
+            $table->foreign("nurse_id")->references("id")->on("nurses");
+//            $table->foreign("admission_id")->references("id")->on("admissions");
+
+
         });
     }
 

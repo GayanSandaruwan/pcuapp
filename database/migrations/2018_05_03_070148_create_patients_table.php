@@ -24,7 +24,10 @@ class CreatePatientsTable extends Migration
 //            $table->integer('age')->nullable();
 //            $table->string("admission_no");
             $table->string("contact_no")->nullable();
-            $table->unsignedInteger("nurse_id")->references("id")->on("nurses");
+            $table->unsignedInteger("nurse_id");        //->references("id")->on("nurses");
+
+            $table->foreign("nurse_id")->references("id")->on("nurses");
+
         });
     }
 

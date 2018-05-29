@@ -16,8 +16,10 @@ class CreateAdmissionsTable extends Migration
         Schema::create('admissions', function (Blueprint $table) {
             $table->increments('id');
             $table->string("admission_no");
-            $table->unsignedInteger("patient_id")->references("id")->on("patients");
+            $table->unsignedInteger("patient_id");  //->references("id")->on("patients");
             $table->timestamps();
+
+            $table->foreign('patient_id')->references('id')->on('patients');
         });
 
     }
