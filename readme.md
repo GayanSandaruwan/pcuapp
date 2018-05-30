@@ -10,6 +10,12 @@ System is to be testes for the usability and acceptability at Lady ridgway hospi
 ## Setting up the project
 Recommend to use a linux environment.
 Install composer. Then install laravel 5.5 through composer. Install all the dependencies using ``composer install``.
+In a windows environment create a .env file by ``cp .env.example .env``
+``php artisan key:generate`` and add the generated key to the .env file.
+Create a database and assign a user to the database with all permissions. eg: 
+``create database pcudb;`` 
+then `` grant all privileges on pcudb.* for pcudbuser@localhost identified by 'pcudbpass;``
+Fill the .env file accordingly.
 Run ``php artisan migrate:install`` to create the migration table, then, to run the migrations run ``php artisan migrate``. To create the default admin and nurse to start the system, run ``php artisan db:seed``. Run the system on apache or on built in server using ``php artisan serve``.
 Not having a internet connection will make the UI's buggy since some stylesheets are loaded through CDN's.
 
