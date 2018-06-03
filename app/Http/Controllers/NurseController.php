@@ -19,8 +19,8 @@ class NurseController extends Controller
         return Validator::make($data, [
             'name' => 'required|max:255',
             'birthday' => 'required|date',
-            'address' => 'required|min:10',
-            'area' =>'required',
+//            'address' => 'required|min:10',
+//            'area' =>'required',
             'gender' => 'required',
             'admission_no' => 'required|unique:admissions',
             'contact_no' =>'nullable|numeric|min:0100000000|max:1000000000'
@@ -49,7 +49,8 @@ class NurseController extends Controller
         $patient->address = $request->address;
         $patient->area = $request->area;
         $patient->contact_no = $request->contact_no;
-
+        $patient->source = $request->source;
+        $patient->triage = $request->triage;
         $patient->nurse_id = Auth::guard("nurse")->user()->id;
         $success = $patient->save();
 

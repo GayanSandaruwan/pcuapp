@@ -68,7 +68,7 @@
                             <div class="row justify-content-md-center{{ $errors->has('birthday') ? ' text-danger' : '' }} mb-3">
                                 <div class="col-md-6 offset-md-3">
                                 <button type="button" class="btn btn-green" data-toggle="modal" data-target="#exampleModal">
-                                    <i class="fa fa-calendar-alt ">Calc Birthday from Age</i>
+                                    <i class="fa fa-calendar-alt "> Age</i>
                                 </button>
                                 </div>
                             </div>
@@ -166,7 +166,7 @@
 
                                 <div class="col-md-6">
                                     <label class="btn btn-info" >
-                                        <input checked="checked" name="gender" id="gender" value="male" type="radio"> Male
+                                        <input name="gender" id="gender" value="male" type="radio"> Male
                                     </label>
                                     <label class="btn btn-info">
                                         <input name="gender" id="gender" value="female" type="radio"> Female
@@ -196,13 +196,16 @@
 
                                 <div class="col-md-6">
                                     <label class="btn btn-info" style="padding-left: 3%; padding-right: 3%" >
-                                        <input checked="checked" name="area" id="area" value="colombo" type="radio"> Colombo
+                                        <input name="area" id="area" value="colombo dist" type="radio"> Colombo
                                     </label>
                                     <label class="btn btn-info" style="padding-left: 3%; padding-right: 3%">
-                                        <input name="area" id="area" value="colombo municipal" type="radio"> Col. Muni.
+                                        <input name="area" id="area" value="colombo mc" type="radio"> Colombo MC
                                     </label>
                                     <label class="btn btn-info" style="padding-left: 5%; padding-right: 5%" >
-                                        <input checked="checked" name="area" id="area" value="out" type="radio">Out
+                                        <input  name="area" id="area" value="kotte mc" type="radio">Kotte MC
+                                    </label>
+                                    <label class="btn btn-info" style="padding-left: 5%; padding-right: 5%" >
+                                        <input  name="area" id="area" value="outside" type="radio">Out
                                     </label>
                                     @if ($errors->has('area'))
                                         <span class="help-block">
@@ -220,6 +223,49 @@
                                     @if ($errors->has('contact_no'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('contact_no') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="row justify-content-md-center{{ $errors->has('source') ? ' text-danger' : '' }} mb-3">
+                                <label for="name" class="col-md-3">source</label>
+
+                                <div class="col-md-6">
+                                    <label class="btn btn-info" style="padding-left: 3%; padding-right: 3%" >
+                                        <input name="source" id="source" value="mo/opd" type="radio"> MO/OPD
+                                    </label>
+                                    <label class="btn btn-info" style="padding-left: 3%; padding-right: 3%">
+                                        <input name="source" id="source" value="mo/admission" type="radio"> MO/Admission
+                                    </label>
+                                    <label class="btn btn-info" style="padding-left: 3%; padding-right: 3%">
+                                        <input name="source" id="source" value="vp/vs clinic" type="radio"> VP/VS clinic
+                                    </label>
+                                    <label class="btn btn-info" style="padding-left: 3%; padding-right: 3%">
+                                        <input name="source" id="source" value="channel admission" type="radio"> Channel Admission
+                                    </label>
+                                    <label class="btn btn-info" style="padding-left: 3%; padding-right: 3%">
+                                        <input name="source" id="source" value="transfer" type="radio"> Transfer
+                                    </label>
+                                    @if ($errors->has('source'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('source') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="row justify-content-md-center{{ $errors->has('triage') ? ' text-danger' : '' }} mb-3">
+                                <label for="name" class="col-md-3">triage</label>
+
+                                <div class="col-md-6">
+                                    <label class="btn btn-info" style="padding-left: 3%; padding-right: 3%" >
+                                        <input name="triage" id="triage" value="triage" type="radio">Triage
+                                    </label>
+                                    <label class="btn btn-info" style="padding-left: 3%; padding-right: 3%">
+                                        <input name="triage" id="triage" value="without triage" type="radio"> Without Triage
+                                    </label>
+                                    @if ($errors->has('triage'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('triage') }}</strong>
                                     </span>
                                     @endif
                                 </div>

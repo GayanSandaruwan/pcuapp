@@ -35,7 +35,7 @@
                             </div>
 
                             <div class="row justify-content-md-center{{ $errors->has('resp_rate') ? ' text-danger' : '' }} mb-3">
-                                <label for="name" class="col-md-3 ">Resp. Rate</label>
+                                <label for="name" class="col-md-3 ">Resp. Rate (/min)</label>
 
                                 <div class="col-md-6">
                                     <input id="resp_rate" type="number" class="form-control" name="resp_rate" value="{{old('resp_rate')}}" min="0" max="300" >
@@ -49,7 +49,7 @@
                             </div>
 
                             <div class="row justify-content-md-center{{ $errors->has('spo2') ? ' text-danger' : '' }} mb-3">
-                                <label for="name" class="col-md-3 ">SPO2</label>
+                                <label for="name" class="col-md-3 ">SPO2 (%)</label>
 
                                 <div class="col-md-6">
                                     <input id="spo2" type="number" class="form-control" name="spo2" value="{{old('spo2')}}" min="0" max="100" >
@@ -63,7 +63,7 @@
                             </div>
 
                             <div class="row justify-content-md-center{{ $errors->has('heart_rate') ? ' text-danger' : '' }} mb-3">
-                                <label for="name" class="col-md-3 ">Heart Rate</label>
+                                <label for="name" class="col-md-3 ">Heart Rate (bpm)</label>
 
                                 <div class="col-md-6">
                                     <input id="heart_rate" type="number" class="form-control" name="heart_rate" value="{{old('heart_rate')}}" min="0" max="300" >
@@ -76,7 +76,7 @@
                                 </div>
                             </div>
                             <div class="row justify-content-md-center{{ $errors->has('systolic_bp') ? ' text-danger' : '' }} mb-3">
-                                <label for="name" class="col-md-3 ">Systolic bp</label>
+                                <label for="name" class="col-md-3 ">Systolic bp (Hgmm)</label>
 
                                 <div class="col-md-6">
                                     <input id="systolic_bp" type="number" class="form-control" name="systolic_bp" value="{{old('systolic_bp')}}" min="0" max="300" >
