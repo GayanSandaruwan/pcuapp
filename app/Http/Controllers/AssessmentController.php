@@ -604,35 +604,33 @@ class AssessmentController extends Controller
 
     private function getRecommendation($total_score){
         $recommendation = array();
-        switch ($total_score){
-            case 1 :
+        switch (true){
+            case $total_score == 1 :
                 $recommendation['observe_frequency'] = '4 Hourly';
                 $recommendation['whom_to_alert'] = ' ';
                 $recommendation['response'] = 'to review room';
                 $recommendation['color_code'] = 'green';
                 break;
-            case 2 :
+            case $total_score == 2 :
                 $recommendation['observe_frequency'] = '2 to 4 Hourly';
                 $recommendation['whom_to_alert'] = ' ';
                 $recommendation['response'] = 'To review room';
                 $recommendation['color_code'] = 'green';
-
                 break;
-            case 3 :
+            case $total_score == 3 :
                 $recommendation['observe_frequency'] = '1 Hourly';
                 $recommendation['whom_to_alert'] = ' Alert Medical Officer';
                 $recommendation['response'] = 'To observation bed';
                 $recommendation['color_code'] = 'blue';
-
                 break;
-            case 4 or 5 :
+            case $total_score == 4 or $total_score == 5 :
                 $recommendation['observe_frequency'] = '30 Minutes';
                 $recommendation['whom_to_alert'] = ' Alert Medical Officer';
                 $recommendation['response'] = 'To observation bed';
                 $recommendation['color_code'] = 'blue';
 
                 break;
-            case 6 :
+            case $total_score == 6 :
                 $recommendation['observe_frequency'] = 'continuous';
                 $recommendation['whom_to_alert'] = ' Alert MO + consultant';
                 $recommendation['response'] = 'Argent senior medical review';
@@ -644,7 +642,6 @@ class AssessmentController extends Controller
                 $recommendation['whom_to_alert'] = 'Urgent PEWS call*';
                 $recommendation['response'] = 'Immediate local response team';
                 $recommendation['color_code'] = 'red';
-
                 break;
         }
         return $recommendation;
