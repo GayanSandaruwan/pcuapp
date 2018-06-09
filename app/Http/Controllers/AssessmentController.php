@@ -655,7 +655,7 @@ class AssessmentController extends Controller
 
     public function getCriticalAssessments(){
         $assessments = Assessment::where("discharge","false")
-//            ->whereRaw("DATEDIFF(NOW(),created_at)<=2")               //TODO uncomment in mysql production server
+            ->whereRaw("DATEDIFF(NOW(),created_at)<=2")               //TODO comment in pgsql server
             ->orderBy("created_at","DESC")->get();
 
         $score_calculated = array();
